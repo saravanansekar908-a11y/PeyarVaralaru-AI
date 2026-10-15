@@ -22,6 +22,8 @@ import {
   Building2,
   AlertTriangle,
   ChevronRight,
+  ChevronLeft,
+  ArrowLeft,
 } from 'lucide-react';
 
 // ── New smart navigation sub-components ──────────────────────────────────────
@@ -113,11 +115,13 @@ export const DistrictDashboard = () => {
       });
     }
 
-    // A–Z letter filter
+    // Bilingual letter filter (Tamil initial or English letter)
     if (activeLetter) {
-      result = result.filter(
-        (d) => (d.district_english || '')[0]?.toUpperCase() === activeLetter
-      );
+      result = result.filter((d) => {
+        const eng = (d.district_english || '')[0]?.toUpperCase();
+        const tam = (d.district_tamil || '').trim()[0];
+        return eng === activeLetter || tam === activeLetter;
+      });
     }
 
     // Sort
@@ -204,7 +208,57 @@ export const DistrictDashboard = () => {
 
       {/* ── DISTRICT DETAIL VIEW (when selected) ────────────────────────────── */}
       {selectedDistrict && (
-        <section className="space-y-8">
+        <section className="space-y-6">
+          {/* Navigation Bar: Back to All Districts & Prev/Next */}
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-3 sm:p-4 rounded-2xl border border-gray-200 shadow-xs">
+            <button
+              type="button"
+              onClick={() => {
+                navigate('/districts');
+                const mainEl = document.getElementById('main-content') || document.querySelector('main');
+                if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#172B40] hover:bg-[#20364F] text-white text-xs sm:text-sm font-bold shadow-sm transition-all group cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              <span>{lang === 'ta' ? 'அனைத்து 38 மாவட்டங்களுக்கும் திரும்பு' : 'Back to All 38 Districts'}</span>
+            </button>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                disabled={selectedDistrict.no <= 1}
+                onClick={() => {
+                  navigate(`/districts/${selectedDistrict.no - 1}`);
+                  const mainEl = document.getElementById('main-content') || document.querySelector('main');
+                  if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold text-[#172B40] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#F7F4ED] hover:border-[#C5A66A] transition-colors cursor-pointer"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+                <span>{lang === 'ta' ? 'முந்தைய' : 'Prev'}</span>
+              </button>
+
+              <span className="px-2.5 py-1 rounded-md bg-[#F7F4ED] text-xs font-black text-[#172B40] border border-gray-200">
+                {selectedDistrict.no} / 38
+              </span>
+
+              <button
+                type="button"
+                disabled={selectedDistrict.no >= 38}
+                onClick={() => {
+                  navigate(`/districts/${selectedDistrict.no + 1}`);
+                  const mainEl = document.getElementById('main-content') || document.querySelector('main');
+                  if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold text-[#172B40] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#F7F4ED] hover:border-[#C5A66A] transition-colors cursor-pointer"
+              >
+                <span>{lang === 'ta' ? 'அடுத்தது' : 'Next'}</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
           {/* A. District Identity Header */}
           <div className="relative rounded-3xl overflow-hidden shadow-xl border border-[#2A3E54] bg-[#0F1D2C] text-white">
             <div
@@ -590,13 +644,18 @@ export const DistrictDashboard = () => {
           lang={lang}
         />
 
-        {/* A–Z Alpha Nav */}
+        {/* A–Z / Tamil Alpha Nav */}
         <DistrictAlphaNav
           districts={allDistricts}
           filteredCount={filteredDistricts.length}
           totalCount={allDistricts.length}
           activeLetter={activeLetter}
-          onLetterClick={setActiveLetter}
+          onLetterClick={(letter) => {
+            setActiveLetter(letter);
+            if (id) {
+              navigate('/districts');
+            }
+          }}
           hasActiveFilters={hasActiveFilters}
           onClearFilters={handleClearAllFilters}
         />

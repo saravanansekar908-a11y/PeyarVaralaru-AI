@@ -33,7 +33,12 @@ const DistrictListRow = ({ district }) => {
     ? (lang === 'ta' ? (topSpeciality.name_ta || topSpeciality.name) : (topSpeciality.name_en || topSpeciality.name))
     : null;
 
-  const handleClick = () => navigate(`/districts/${no}`);
+  const handleClick = () => {
+    navigate(`/districts/${no}`);
+    const mainEl = document.getElementById('main-content') || document.querySelector('main');
+    if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <article

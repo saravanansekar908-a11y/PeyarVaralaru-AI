@@ -122,6 +122,9 @@ const DistrictSearchBar = ({ value, onChange, onClear, onDistrictSelect }) => {
     if (item.district_no) {
       navigate(`/districts/${item.district_no}`);
       if (onDistrictSelect) onDistrictSelect(item.district_no);
+      const mainEl = document.getElementById('main-content') || document.querySelector('main');
+      if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 

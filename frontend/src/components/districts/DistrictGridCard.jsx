@@ -43,6 +43,9 @@ const DistrictGridCard = ({ district }) => {
 
   const handleClick = () => {
     navigate(`/districts/${no}`);
+    const mainEl = document.getElementById('main-content') || document.querySelector('main');
+    if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Subtle per-region color accent

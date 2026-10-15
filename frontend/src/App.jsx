@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { LanguageProvider } from './services/LanguageContext';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import ScrollToTop from './components/ScrollToTop';
 
 import Home from './pages/Home';
 import SearchPage from './pages/SearchPage';
@@ -24,7 +25,7 @@ function AppContent() {
         setMobileMenuOpen={setMobileMenuOpen} 
       />
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden relative">
         {/* Desktop Sidebar & Mobile Drawer */}
         <Sidebar 
           mobileMenuOpen={mobileMenuOpen} 
@@ -32,7 +33,7 @@ function AppContent() {
         />
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+        <main id="main-content" className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/search" element={<SearchPage />} />
@@ -56,8 +57,10 @@ export default function App() {
   return (
     <LanguageProvider>
       <Router>
+        <ScrollToTop />
         <AppContent />
       </Router>
     </LanguageProvider>
   );
 }
+

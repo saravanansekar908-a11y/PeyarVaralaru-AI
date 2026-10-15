@@ -116,7 +116,7 @@ export const Home = () => {
       desc_en: 'Renowned temple city at the foothills of sacred Annamalai, with over 100 stone inscriptions recording endowments.'
     },
     {
-      id: 9,
+      id: 10,
       name_ta: 'மதுரை',
       name_en: 'Madurai',
       image: '/images/madurai.jpg',
@@ -131,19 +131,19 @@ export const Home = () => {
       desc_en: 'Ancient seat of the Tamil Sangam academies on the Vaigai river, celebrated in Sangam anthologies.'
     },
     {
-      id: 10,
-      name_ta: 'மாமல்லபுரம்',
-      name_en: 'Mamallapuram',
+      id: 7,
+      name_ta: 'காஞ்சிபுரம்',
+      name_en: 'Kanchipuram',
       image: '/images/mamallapuram.jpg',
-      category_ta: 'பல்லவர் கடற்கரை சிற்ப நகரம்',
-      category_en: 'UNESCO Shore Temples & Seaport',
-      district_ta: 'செங்கல்பட்டு',
-      district_en: 'Chengalpattu',
-      period_ta: 'பல்லவர் காலம் (7-8-ஆம் நூற்றாண்டு)',
-      period_en: 'Pallava Era (7th-8th Century CE)',
+      category_ta: 'பல்லவர் தலைநகரம் & பட்டு நகரம்',
+      category_en: 'Pallava Capital & Temple City',
+      district_ta: 'காஞ்சிபுரம்',
+      district_en: 'Kanchipuram',
+      period_ta: 'பல்லவர் காலம் (6-8-ஆம் நூற்றாண்டு)',
+      period_en: 'Pallava Era (6th-8th Century CE)',
       evidence: 'verified',
-      desc_ta: 'பல்லவ மன்னன் முதலாம் நரசிம்மவர்மனின் துறைமுக நகரம். கடற்கரைக் கோயில் மற்றும் உலகப் புகழ்பெற்ற பாறைச் சிற்பங்கள்.',
-      desc_en: 'Ancient Pallava maritime port and UNESCO World Heritage sanctuary famous for the monolith Shore Temple.'
+      desc_ta: 'பல்லவ மன்னர்களின் தலைநகரமாகவும், கைலாசநாதர் மற்றும் ஏகாம்பரநாதர் வரலாற்றுச் சிறப்புமிக்க கோயில்களைக் கொண்ட புகழ்பெற்ற பட்டு நகரம்.',
+      desc_en: 'Historic imperial capital of the Pallavas, celebrated for Kailasanathar temple inscriptions and traditional silk weaving.'
     },
     {
       id: 1,

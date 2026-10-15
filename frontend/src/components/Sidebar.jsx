@@ -67,14 +67,14 @@ export const Sidebar = ({ mobileMenuOpen, setMobileMenuOpen }) => {
       {/* Mobile backdrop */}
       {mobileMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black/60 z-30 lg:hidden backdrop-blur-xs transition-opacity"
+          className="fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-xs transition-opacity"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
 
       {/* Sidebar container */}
       <aside
-        className={`fixed lg:static top-16 bottom-0 left-0 z-30 w-64 bg-[#172B40] text-gray-200 border-r border-[#243950] flex flex-col justify-between transition-transform duration-200 ease-in-out ${
+        className={`fixed lg:static top-16 bottom-0 left-0 z-50 w-64 bg-[#172B40] text-gray-200 border-r border-[#243950] flex flex-col justify-between transition-transform duration-200 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0'
         }`}
       >
