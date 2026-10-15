@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-navy: #172B40;
+    --color-ivory: #F7F4ED;
+    --color-gold: #C5A66A;
+    --color-gold-light: #E8D8B0;
+    --color-slate-light: #F1F5F9;
+    --color-slate-border: #E2E8F0;
+    --color-slate-text: #64748B;
+    --color-slate-dark: #334155;
+  }
+
+  body {
+    background-color: #F7F4ED;
+    color: #172B40;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Tamil", "Latha", sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+}
+
+/* Custom utility classes */
+.bg-navy { background-color: #172B40; }
+.text-navy { color: #172B40; }
+.border-navy { border-color: #172B40; }
+
+.bg-ivory { background-color: #F7F4ED; }
+.text-ivory { color: #F7F4ED; }
+
+.bg-gold { background-color: #C5A66A; }
+.text-gold { color: #C5A66A; }
+.border-gold { border-color: #C5A66A; }
+
+.bg-gold-light { background-color: #FDF9F0; }
+.border-gold-light { border-color: #E8D8B0; }
+
+.badge-verified {
+  background-color: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+
+.badge-partially-verified {
+  background-color: #FFFBEB;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+}
+
+.badge-unverified {
+  background-color: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}

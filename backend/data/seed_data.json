@@ -1,0 +1,344 @@
+{
+  "places": [
+    {
+      "id": 1,
+      "current_name": "Chennai",
+      "current_name_tamil": "சென்னை",
+      "district": "Chennai",
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "description": "Capital city of Tamil Nadu. One of the largest cultural, economic, and educational centres in South India. Historically known as Madras during the British colonial period.",
+      "description_tamil": "தமிழ்நாட்டின் தலைநகரம். தென்னிந்தியாவின் மிகப்பெரிய கலாச்சார, பொருளாதார மற்றும் கல்வி மையங்களில் ஒன்று. பிரிட்டிஷ் காலனித்துவ காலத்தில் மெட்ராஸ் என அழைக்கப்பட்டது."
+    },
+    {
+      "id": 2,
+      "current_name": "George Town",
+      "current_name_tamil": "ஜார்ஜ் டவுன்",
+      "district": "Chennai",
+      "latitude": 13.0948,
+      "longitude": 80.2867,
+      "description": "A neighbourhood in northern Chennai. One of the oldest commercial areas in the city. Historically known as Black Town during the early colonial period.",
+      "description_tamil": "வடக்கு சென்னையில் உள்ள ஒரு பகுதி. நகரத்தின் மிகப் பழமையான வணிகப் பகுதிகளில் ஒன்று. ஆரம்ப காலனித்துவ காலத்தில் பிளாக் டவுன் என்று அழைக்கப்பட்டது."
+    },
+    {
+      "id": 3,
+      "current_name": "Tiruchirappalli",
+      "current_name_tamil": "திருச்சிராப்பள்ளி",
+      "district": "Tiruchirappalli",
+      "latitude": 10.7905,
+      "longitude": 78.7047,
+      "description": "A major city in central Tamil Nadu situated on the banks of the river Kaveri. Known for the Rock Fort Temple and historically referred to as Trichinopoly in English-language records.",
+      "description_tamil": "காவிரி நதிக்கரையில் அமைந்த மத்திய தமிழ்நாட்டின் முக்கிய நகரம். மலைக்கோட்டை கோயிலுக்குப் புகழ்பெற்றது. ஆங்கில மொழி ஆவணங்களில் டிரிச்சினோப்பொலி என்று குறிப்பிடப்படுகிறது."
+    },
+    {
+      "id": 4,
+      "current_name": "Thanjavur",
+      "current_name_tamil": "தஞ்சாவூர்",
+      "district": "Thanjavur",
+      "latitude": 10.787,
+      "longitude": 79.1378,
+      "description": "An important city in the Kaveri Delta region. Known as the rice bowl of Tamil Nadu and home to the Brihadeeswarar Temple, a UNESCO World Heritage Site. Historically referred to as Tanjore in English records.",
+      "description_tamil": "காவிரி டெல்டா பகுதியில் உள்ள முக்கியமான நகரம். தமிழ்நாட்டின் நெல் கிடங்கு என்று அழைக்கப்படுகிறது. யுனெஸ்கோ உலக பாரம்பரிய தளமான பிரகதீஸ்வரர் கோயிலின் இருப்பிடம். ஆங்கில ஆவணங்களில் டான்ஜோர் என்று குறிப்பிடப்படுகிறது."
+    },
+    {
+      "id": 5,
+      "current_name": "Tiruvannamalai",
+      "current_name_tamil": "திருவண்ணாமலை",
+      "district": "Tiruvannamalai",
+      "latitude": 12.2253,
+      "longitude": 79.0747,
+      "description": "A renowned temple city and district headquarters situated at the foothills of Annamalai Hills in northern Tamil Nadu. Famous for the sacred Arunachaleswarar (Annamalaiyar) Temple. Historically documented in 18th- and 19th-century British records under variants such as Trinomali and Trinomaly.",
+      "description_tamil": "அண்ணாமலை மலையடிவாரத்தில் அமைந்துள்ள புகழ்பெற்ற ஆன்மீக நகரமும், திருவண்ணாமலை மாவட்டத்தின் நிர்வாகத் தலைமையகமும் ஆகும். அருணாசலேஸ்வரர் (அண்ணாமலையார்) கோயிலுக்குப் பெயர் பெற்றது. 18 மற்றும் 19-ஆம் நூற்றாண்டு பிரிட்டிஷ் ஆவணங்களில் திரிணோமலி (Trinomali) எனப் பதிவு செய்யப்பட்டுள்ளது."
+    },
+    {
+      "id": 6,
+      "current_name": "Arani",
+      "current_name_tamil": "ஆரணி",
+      "district": "Tiruvannamalai",
+      "latitude": 12.67,
+      "longitude": 79.28,
+      "description": "A historic town in Tiruvannamalai district situated on the banks of the Kamandala Naga river. Renowned for traditional silk weaving and the historic Arani Fort. Documented as Arnee in 18th-century British East India Company records during the Battle of Arnee in 1751.",
+      "description_tamil": "திருவண்ணாமலை மாவட்டத்தில் கமண்டல நாக நதிக்கரையில் அமைந்துள்ள வரலாற்று சிறப்புமிக்க நகரம். பாரம்பரிய பட்டு நெசவுத் தொழிலுக்கும் வரலாற்றுச் சிறப்புமிக்க ஆரணிக் கோட்டைக்கும் பெயர் பெற்றது. 1751-இல் நடைபெற்ற ஆரணிப் போர் குறித்த பிரிட்டிஷ் ஆவணங்களில் 'Arnee' என ஆவணப்படுத்தப்பட்டுள்ளது."
+    },
+    {
+      "id": 7,
+      "current_name": "Kanchipuram",
+      "current_name_tamil": "காஞ்சிபுரம்",
+      "district": "Kanchipuram",
+      "latitude": 12.8342,
+      "longitude": 79.7036,
+      "description": "One of the oldest continuously inhabited cities in Tamil Nadu, historically the capital of the Pallava dynasty. Renowned for its ancient temples and silk saris. In colonial records, maps, and railway documentation, it was regularly referred to as Conjeeveram.",
+      "description_tamil": "பல்லவ பேரரசின் வரலாற்றுத் தலைநகரமாகவும், தமிழ்நாட்டின் தொன்மையான நகரங்களில் ஒன்றாகவும் விளங்கும் நகரம். புகழ்பெற்ற கோயில்களுக்கும் பட்டுச் சேலைகளுக்கும் பெயர் பெற்றது. பிரிட்டிஷ் ஆவணங்கள் மற்றும் வரைபடங்களில் 'கான்ஜீவரம்' (Conjeeveram) என பரவலாகக் குறிப்பிடப்பட்டது."
+    }
+  ],
+  "historical_names": [
+    {
+      "id": 1, "place_id": 1, "name": "Madras", "language": "English",
+      "name_type": "official_renaming", "valid_from": "1639", "valid_to": "1996"
+    },
+    {
+      "id": 2, "place_id": 1, "name": "மெட்ராஸ்", "language": "Tamil",
+      "name_type": "transliteration", "valid_from": "1639", "valid_to": "1996"
+    },
+    {
+      "id": 3, "place_id": 1, "name": "Madraspatnam", "language": "English",
+      "name_type": "historical_variant", "valid_from": "1639", "valid_to": null
+    },
+    {
+      "id": 4, "place_id": 1, "name": "Chennapatnam", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 5, "place_id": 1, "name": "சென்னப்பட்டணம்", "language": "Tamil",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 6, "place_id": 2, "name": "Black Town", "language": "English",
+      "name_type": "official_renaming", "valid_from": null, "valid_to": "1906"
+    },
+    {
+      "id": 7, "place_id": 2, "name": "பிளாக் டவுன்", "language": "Tamil",
+      "name_type": "transliteration", "valid_from": null, "valid_to": "1906"
+    },
+    {
+      "id": 8, "place_id": 3, "name": "Trichinopoly", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 9, "place_id": 3, "name": "டிரிச்சினோப்பொலி", "language": "Tamil",
+      "name_type": "transliteration", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 10, "place_id": 4, "name": "Tanjore", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 11, "place_id": 4, "name": "டான்ஜோர்", "language": "Tamil",
+      "name_type": "transliteration", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 12, "place_id": 5, "name": "Trinomali", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 13, "place_id": 5, "name": "Trinomaly", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 14, "place_id": 5, "name": "திரிணோமலி", "language": "Tamil",
+      "name_type": "transliteration", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 15, "place_id": 5, "name": "Thiruvannamalai", "language": "English",
+      "name_type": "transliteration", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 23, "place_id": 3, "name": "Trichy", "language": "English",
+      "name_type": "transliteration", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 24, "place_id": 3, "name": "திருச்சி", "language": "Tamil",
+      "name_type": "transliteration", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 25, "place_id": 4, "name": "Thanjai", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 26, "place_id": 4, "name": "தஞ்சை", "language": "Tamil",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 27, "place_id": 5, "name": "Annamalai", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 28, "place_id": 5, "name": "அண்ணாமலை", "language": "Tamil",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 16, "place_id": 6, "name": "Arnee", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 17, "place_id": 6, "name": "ஆர்னீ", "language": "Tamil",
+      "name_type": "transliteration", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 18, "place_id": 6, "name": "Arani", "language": "English",
+      "name_type": "transliteration", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 19, "place_id": 7, "name": "Conjeeveram", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 20, "place_id": 7, "name": "கான்ஜீவரம்", "language": "Tamil",
+      "name_type": "transliteration", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 21, "place_id": 7, "name": "Kanchi", "language": "English",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    },
+    {
+      "id": 22, "place_id": 7, "name": "காஞ்சி", "language": "Tamil",
+      "name_type": "historical_variant", "valid_from": null, "valid_to": null
+    }
+  ],
+  "events": [
+    {
+      "id": 1, "place_id": 1, "event_type": "official_renaming",
+      "event_date": "1996", "date_precision": "year",
+      "description": "The city of Madras was officially renamed to Chennai by the Government of Tamil Nadu.",
+      "description_tamil": "தமிழ்நாடு அரசால் மெட்ராஸ் நகரம் அதிகாரப்பூர்வமாக சென்னை என மறுபெயரிடப்பட்டது.",
+      "evidence_status": "verified"
+    },
+    {
+      "id": 2, "place_id": 1, "event_type": "settlement_founded",
+      "event_date": "1639", "date_precision": "year",
+      "description": "The East India Company established a fortified trading post at Madraspatnam, which later developed into Fort St. George and the city of Madras.",
+      "description_tamil": "கிழக்கிந்திய கம்பெனி மெட்ராஸ்பட்டினத்தில் ஒரு கோட்டையமைக்கப்பட்ட வர்த்தக நிலையத்தை நிறுவியது, இது பின்னர் செயின்ட் ஜார்ஜ் கோட்டையாகவும் மெட்ராஸ் நகரமாகவும் வளர்ந்தது.",
+      "evidence_status": "partially_verified"
+    },
+    {
+      "id": 3, "place_id": 2, "event_type": "official_renaming",
+      "event_date": "3 March 1906", "date_precision": "exact",
+      "description": "Black Town was officially renamed to George Town through Government Order No. 158, Public Department, dated 3 March 1906.",
+      "description_tamil": "பிளாக் டவுன் 1906 மார்ச் 3 தேதியிட்ட அரசாணை எண் 158, பொதுத் துறை மூலம் அதிகாரப்பூர்வமாக ஜார்ஜ் டவுன் என மறுபெயரிடப்பட்டது.",
+      "evidence_status": "verified"
+    },
+    {
+      "id": 4, "place_id": 3, "event_type": "name_variant_recorded",
+      "event_date": null, "date_precision": "unknown",
+      "description": "Tiruchirappalli was referred to as Trichinopoly in British-era English-language records and maps.",
+      "description_tamil": "திருச்சிராப்பள்ளி பிரிட்டிஷ் கால ஆங்கில மொழி ஆவணங்கள் மற்றும் வரைபடங்களில் டிரிச்சினோப்பொலி என்று குறிப்பிடப்பட்டுள்ளது.",
+      "evidence_status": "partially_verified"
+    },
+    {
+      "id": 5, "place_id": 4, "event_type": "name_variant_recorded",
+      "event_date": null, "date_precision": "unknown",
+      "description": "Thanjavur was referred to as Tanjore in British-era English-language records. This is a historical spelling variant rather than an official renaming.",
+      "description_tamil": "தஞ்சாவூர் பிரிட்டிஷ் கால ஆங்கில மொழி ஆவணங்களில் டான்ஜோர் என்று குறிப்பிடப்பட்டுள்ளது. இது அதிகாரப்பூர்வ மறுபெயரிடுதல் அல்ல, வரலாற்று எழுத்துப் பிழைமாற்றம் ஆகும்.",
+      "evidence_status": "partially_verified"
+    },
+    {
+      "id": 6, "place_id": 5, "event_type": "name_variant_recorded",
+      "event_date": null, "date_precision": "unknown",
+      "description": "Tiruvannamalai was recorded under the spelling variants Trinomali and Trinomaly in 18th-century British East India Company records and 19th-century Madras Presidency gazetteers.",
+      "description_tamil": "திருவண்ணாமலை 18-ஆம் நூற்றாண்டு பிரிட்டிஷ் கிழக்கிந்திய கம்பெனி பதிவுகள் மற்றும் 19-ஆம் நூற்றாண்டு மெட்ராஸ் மாகாண அரசிதழ்களில் திரிணோமலி (Trinomali / Trinomaly) எனப் பதிவு செய்யப்பட்டுள்ளது.",
+      "evidence_status": "partially_verified"
+    },
+    {
+      "id": 7, "place_id": 6, "event_type": "name_variant_recorded",
+      "event_date": "1751", "date_precision": "year",
+      "description": "Recorded as Arnee in British East India Company military dispatches documenting the Battle of Arnee in December 1751 led by Robert Clive.",
+      "description_tamil": "1751 டிசம்பரில் ராபர்ட் கிளைவ் தலைமையில் நடைபெற்ற ஆரணிப் போர் குறித்த பிரிட்டிஷ் கிழக்கிந்திய கம்பெனி இராணுவக் குறிப்புகளில் 'Arnee' என ஆவணப்படுத்தப்பட்டுள்ளது.",
+      "evidence_status": "partially_verified"
+    },
+    {
+      "id": 8, "place_id": 7, "event_type": "name_variant_recorded",
+      "event_date": null, "date_precision": "unknown",
+      "description": "Kanchipuram was commonly referred to as Conjeeveram in British colonial maps, revenue records, and South Indian Railway surveys.",
+      "description_tamil": "காஞ்சிபுரம் பிரிட்டிஷ் காலனித்துவ வரைபடங்கள், வருவாய்த்துறை பதிவேடுகள் மற்றும் தென்னிந்திய தொடர்வண்டி ஆய்வுகளில் 'Conjeeveram' என பரவலாகக் குறிப்பிடப்பட்டது.",
+      "evidence_status": "partially_verified"
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "title": "Chennai District — Official History",
+      "title_tamil": "சென்னை மாவட்டம் — அதிகாரப்பூர்வ வரலாறு",
+      "publisher": "District Administration, Chennai",
+      "source_url": "https://chennai.nic.in/history/",
+      "document_identifier": "Gazetteer of South India (Madras)",
+      "publication_date": "1996",
+      "page_number": null,
+      "evidence_excerpt": "The city of Madras was officially renamed to Chennai in 1996 by the Government of Tamil Nadu.",
+      "evidence_excerpt_tamil": "1996-இல் தமிழ்நாடு அரசால் மெட்ராஸ் நகரம் அதிகாரப்பூர்வமாக சென்னை என மறுபெயரிடப்பட்டது."
+    },
+    {
+      "id": 2,
+      "title": "Tamil Nadu Archives — Gazetteers Collection",
+      "title_tamil": "தமிழ்நாடு ஆவணக்காப்பகம் — அரசிதழ் தொகுப்பு",
+      "publisher": "Tamil Nadu Archives and Historical Research Department",
+      "source_url": "https://www.tamilnaduarchives.tn.gov.in/WEB/EN/PAGE/GAZETTEERS",
+      "document_identifier": "Imperial Gazetteer of India, Madras Series",
+      "publication_date": "1908",
+      "page_number": null,
+      "evidence_excerpt": "Historical survey of Madras Presidency place names and British colonial variant records.",
+      "evidence_excerpt_tamil": "மெட்ராஸ் மாகாண இடப்பெயர்கள் மற்றும் பிரிட்டிஷ் காலனித்துவ பதிவுகளின் வரலாற்று ஆய்வு."
+    },
+    {
+      "id": 3,
+      "title": "Tamil Nadu Archives — Important Government Orders",
+      "title_tamil": "தமிழ்நாடு ஆவணக்காப்பகம் — முக்கிய அரசாணைகள்",
+      "publisher": "Tamil Nadu Archives and Historical Research Department",
+      "source_url": "https://tamilnaduarchives.tn.gov.in/WEB/EN/RECORDS/IMPGO",
+      "document_identifier": "G.O. No. 158, Public Department, 3 March 1906",
+      "publication_date": "1906",
+      "page_number": null,
+      "evidence_excerpt": "Order directing that Black Town shall henceforward be named and designated as George Town.",
+      "evidence_excerpt_tamil": "பிளாக் டவுன் இனி ஜார்ஜ் டவுன் என அழைக்கப்பட வேண்டும் என உத்தரவிடும் அரசாணை எண் 158."
+    },
+    {
+      "id": 4,
+      "title": "Tiruchirappalli District — About the District",
+      "title_tamil": "திருச்சிராப்பள்ளி மாவட்டம் — மாவட்டத்தைப் பற்றி",
+      "publisher": "District Administration, Tiruchirappalli",
+      "source_url": "https://tiruchirappalli.nic.in/about-district/",
+      "document_identifier": "Madras District Gazetteers: Trichinopoly",
+      "publication_date": "1907",
+      "page_number": null,
+      "evidence_excerpt": "Tiruchirappalli was formerly spelled Trichinopoly by British authorities.",
+      "evidence_excerpt_tamil": "திருச்சிராப்பள்ளி ஆங்கிலேய அதிகாரிகளால் டிரிச்சினோப்பொலி என எழுதப்பட்டது."
+    },
+    {
+      "id": 5,
+      "title": "Imperial Gazetteer of India — North Arcot and Tiruvannamalai Records",
+      "title_tamil": "இம்பீரியல் கெசட்டியர் ஆஃப் இந்தியா — வட ஆற்காடு மற்றும் திருவண்ணாமலை பதிவுகள்",
+      "publisher": "Government of India / Oxford Clarendon Press",
+      "source_url": "https://tiruvannamalai.nic.in/about-district/",
+      "document_identifier": "Imperial Gazetteer of India, Vol. 23 (Trinomali)",
+      "publication_date": "1908",
+      "page_number": "399-400",
+      "evidence_excerpt": "Trinomali (Tiruvannamalai) — Headquarters of the taluk of the same name in North Arcot District, Madras...",
+      "evidence_excerpt_tamil": "திரிணோமலி (திருவண்ணாமலை) — மெட்ராஸ் மாகாண வட ஆற்காடு மாவட்ட தலைமையக நகரம்..."
+    },
+    {
+      "id": 6,
+      "title": "North Arcot District Gazetteer — Records of Arani and the Battle of Arnee",
+      "title_tamil": "வட ஆற்காடு மாவட்ட அரசிதழ் — ஆரணி மற்றும் ஆரணிப் போர் பதிவுகள்",
+      "publisher": "Madras District Gazetteers / Government Press, Madras",
+      "source_url": "https://tiruvannamalai.nic.in/history/",
+      "document_identifier": "Madras District Gazetteers: North Arcot, Vol. 1",
+      "publication_date": "1895",
+      "page_number": "220-225",
+      "evidence_excerpt": "Battle of Arnee (1751) fought between the British and French-backed forces near Arani fort...",
+      "evidence_excerpt_tamil": "1751-இல் ஆரணிக் கோட்டை அருகே நடைபெற்ற ஆரணிப் போர் குறித்த வரலாற்றுப் பதிவு..."
+    },
+    {
+      "id": 7,
+      "title": "Chingleput District Manual and Imperial Gazetteer — Conjeeveram",
+      "title_tamil": "செங்கல்பட்டு மாவட்ட கையேடு மற்றும் இம்பீரியல் கெசட்டியர் — கான்ஜீவரம்",
+      "publisher": "Madras Presidency Gazetteers",
+      "source_url": "https://kancheepuram.nic.in/about-district/",
+      "document_identifier": "Imperial Gazetteer of India, Vol. 10 (Conjeeveram)",
+      "publication_date": "1908",
+      "page_number": "377-380",
+      "evidence_excerpt": "Conjeeveram (Kanchipuram) — Town in the Chingleput District, Madras, historic capital of the Pallavas.",
+      "evidence_excerpt_tamil": "கான்ஜீவரம் (காஞ்சிபுரம்) — மெட்ராஸ் மாகாண செங்கல்பட்டு மாவட்ட வரலாற்று நகரம், பல்லவர்களின் பண்டைய தலைநகரம்."
+    }
+  ],
+  "event_sources": [
+    { "event_id": 1, "source_id": 1 },
+    { "event_id": 1, "source_id": 2 },
+    { "event_id": 2, "source_id": 1 },
+    { "event_id": 2, "source_id": 2 },
+    { "event_id": 3, "source_id": 3 },
+    { "event_id": 4, "source_id": 4 },
+    { "event_id": 5, "source_id": 2 },
+    { "event_id": 6, "source_id": 5 },
+    { "event_id": 7, "source_id": 6 },
+    { "event_id": 8, "source_id": 7 }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "app": {
+    "title": "PeyarVaralaru AI",
+    "subtitle": "Historical Tamil Place Name Research Platform",
+    "tagline": "Explore the historical place names of Tamil Nadu with AI assistance"
+  },
+  "nav": {
+    "home": "Home",
+    "search": "Search",
+    "timeline": "Timeline",
+    "askAI": "Ask History AI",
+    "graph": "Relationship Explorer",
+    "sources": "Sources",
+    "language": "Language"
+  },
+  "home": {
+    "welcome": "Welcome to PeyarVaralaru AI",
+    "description": "Explore the historical names of cities, villages, streets, and rivers in Tamil Nadu. Discover information from old maps, government orders, gazetteers, and inscriptions.",
+    "searchPlaceholder": "Search for a place name... (e.g., Madras, Chennai)",
+    "quickLinks": "Quick Links",
+    "featuredPlaces": "Featured Historical Places",
+    "evidenceTitle": "Evidence Verification",
+    "evidenceDesc": "Our platform clearly distinguishes between verified facts, historical spelling variants, and uncertain historical claims.",
+    "verified": "Verified",
+    "verifiedDesc": "Information confirmed by official documents",
+    "partiallyVerified": "Partially Verified",
+    "partiallyVerifiedDesc": "Source documents identified but not fully verified",
+    "unverified": "Unverified",
+    "unverifiedDesc": "Historical claims requiring further research"
+  },
+  "search": {
+    "title": "Place Name Search",
+    "placeholder": "Search in Tamil or English...",
+    "button": "Search",
+    "results": "Search Results",
+    "noResults": "No results found. Try searching with a different name.",
+    "matchReason": "Match Reason",
+    "historicalNames": "Historical Names",
+    "viewDetails": "View Details",
+    "searching": "Searching...",
+    "enterQuery": "Enter a search term"
+  },
+  "place": {
+    "title": "Place Details",
+    "currentName": "Current Name",
+    "district": "District",
+    "historicalNames": "Historical Names",
+    "timeline": "Historical Timeline",
+    "sources": "Source Documents",
+    "viewGraph": "Relationship Graph",
+    "language": "Language",
+    "nameType": "Name Type",
+    "period": "Period",
+    "noTimeline": "No timeline events available for this place.",
+    "noSources": "No source documents available."
+  },
+  "event": {
+    "official_renaming": "Official Renaming",
+    "name_variant_recorded": "Historical Name Recorded",
+    "transliteration_change": "Transliteration Change",
+    "settlement_founded": "Settlement Founded",
+    "historical_variant": "Historical Variant",
+    "transliteration": "Transliteration",
+    "uncertain": "Uncertain",
+    "dateUnknown": "Date unknown"
+  },
+  "evidence": {
+    "title": "Evidence & Sources",
+    "status": "Verification Status",
+    "verified": "Verified",
+    "partially_verified": "Partially Verified",
+    "unverified": "Unverified",
+    "documentId": "Document Identifier",
+    "publisher": "Publisher",
+    "publicationDate": "Publication Date",
+    "pageNumber": "Page Number",
+    "excerpt": "Evidence Excerpt",
+    "viewSource": "View Source",
+    "relatedEvents": "Related Events"
+  },
+  "ask": {
+    "title": "Ask History AI",
+    "subtitle": "Ask questions about the historical place names of Tamil Nadu",
+    "placeholder": "Type your question here...",
+    "send": "Send",
+    "thinking": "Thinking...",
+    "aiGenerated": "AI-Generated Answer",
+    "databaseOnly": "Database-Based Answer",
+    "sourcesUsed": "Sources Used",
+    "suggestions": "Suggested Questions",
+    "suggestion1": "What is the history of the name Madras?",
+    "suggestion2": "When was Black Town renamed to George Town?",
+    "suggestion3": "Which place is Trichinopoly?",
+    "suggestion4": "What is the difference between an official renaming and a historical variant?"
+  },
+  "graph": {
+    "title": "Historical Relationship Explorer",
+    "subtitle": "Explore connections between places, historical names, events, and sources",
+    "selectPlace": "Select a place",
+    "legend": "Legend",
+    "place": "Place",
+    "historicalName": "Historical Name",
+    "eventNode": "Event",
+    "sourceNode": "Source Document",
+    "fitView": "Fit View",
+    "reset": "Reset",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "nodeDetails": "Node Details",
+    "noSelection": "Click a node to view details"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "back": "Back",
+    "close": "Close",
+    "from": "From",
+    "to": "To",
+    "unknown": "Unknown",
+    "notAvailable": "Not available"
+  }
+}
