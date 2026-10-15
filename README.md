@@ -186,52 +186,40 @@ FRONTEND_ORIGIN=http://localhost:5173
 | `GET` | `/api/places/{id}/timeline` | Chronological event timeline |
 | `GET` | `/api/places/{id}/sources` | Sources supporting events for a place |
 | `GET` | `/api/sources` | All historical primary source records |
+| `GET` | `/api/documents` | Ingested gazetteers, epigraphical records & metadata |
+| `POST` | `/api/documents/ingest` | Ingest new historical document into SQLite without retraining |
+| `GET` | `/api/documents/{id}/passages` | Searchable passage chunks for a document |
+| `GET` | `/api/documents/search/passages` | Local RAG passage search across gazetteers |
 | `GET` | `/api/graph/{id}` | Node & edge data for React Flow visualization |
-| `POST` | `/api/ask` | Evidence-grounded historical question answering |
+| `POST` | `/api/ask` | Source-grounded RAG historical Q&A |
+| `POST` | `/api/history/research` | Universal place research pipeline with ambiguity resolution |
 
 ---
 
-## 🧪 Sample Demonstration Workflow
+## 🏛️ Grounded Research Documents Ingested
 
-1. **First-Time Load**: Open `http://localhost:5173`. Notice all navigation, headers, and descriptions are rendered in **Tamil (தமிழ்)**.
-2. **Language Switching**: Click **English** in the top navigation bar. The entire interface immediately switches to English. Click **தமிழ்** to restore Tamil.
-3. **Smart Place Search**:
-   - Type `Madras` in the search bar.
-   - Result displays **Chennai (சென்னை)** with match reason `exact_historical_name:Madras`.
-   - Historical variants shown: *Madras*, *மெட்ராஸ்*, *Madraspatnam*, *Chennapatnam*, *சென்னப்பட்டணம்*.
-4. **Timeline & Sources**:
-   - Click "Explore Historical Timeline" for Chennai.
-   - Inspect the official 1996 renaming event and colonial 1639 settlement event with primary source links to Tamil Nadu Archives.
-5. **Ask History AI**:
-   - Navigate to `/ask`.
-   - Click the prompt chip: *"When was Black Town renamed to George Town?"*
-   - View answer citing G.O. No. 158, Public Department, dated 3 March 1906.
-6. **Relationship Graph**:
-   - Navigate to `/graph`.
-   - Select **Chennai** or **George Town** to explore the interactive node network linking places to historical names, events, and source documents.
+1. **Coimbatore District Manual (Vol. I & II)**: Harold A. Stuart, M.C.S. (1887) — Records Perur Patteeswarar temple 11th-century Chola stone inscriptions naming 'Kovanputhur'.
+2. **South Arcot District Gazetteer**: W. Francis, I.C.S. (1906) — Documents 'Viluppuraiyan' Chola noble title and 1993 South Arcot bifurcation into Villupuram District.
+3. **South Indian Inscriptions (Vol. VIII)**: Archaeological Survey of India (1937) — Over 100 stone inscriptions in Arunachaleswara temple recording 'Tiruvannamalai Udaiyar' across Chola, Hoysala, and Vijayanagara reigns.
+4. **North Arcot District Manual (Vol. II)**: Arthur F. Cox (1895) — Documents 'Aru + Ani' river loop toponymy, autonomous Arani Jagir (1640), and the 1751 Battle of Arnee.
+5. **Gazetteer of India: Tiruvannamalai District & Polur Revenue Manual**: TN Archives (2000) — Documents Kalambur's 18th-century revenue title 'Aliyabad' and marks etymology as uncertain without inventing folk origins.
+6. **Madras in the Olden Time (1639–1748)**: J. Talboys Wheeler (1861) — Records 1639 Francis Day grant from Damarla Nayakas naming Chennapatnam in honor of Damarla Chennappa Nayaka.
+7. **Fort St. George Gazette (1906)**: Public Department G.O. No. 158 — Official renaming of Black Town to George Town.
+8. **Census of India 2011: District Census Handbook Series (Tamil Nadu)**: Directorate of Census Operations — Administrative directory separating modern state/district/taluk boundaries from historical etymology.
 
 ---
 
-## 📜 Historical Seed Records
+## 🧪 Evaluation Benchmark Harness
 
-1. **Chennai (`id: 1`)**:
-   - Current Name: Chennai (சென்னை)
-   - Historical Variants: Madras, மெட்ராஸ், Madraspatnam, Chennapatnam, சென்னப்பட்டணம்
-   - Verified Event: 1996 official renaming.
-   - Sources: Chennai District Administration & Tamil Nadu Archives Gazetteers.
+The evaluation harness in `evaluate_rag.py` tests 5 core scientific criteria across independently verified test cases in `data/eval_dataset.json`:
+- **Retrieval Accuracy**: Precision of local passage retrieval from local SQLite archives.
+- **Factual Support**: Exact presence of verified inscriptional and archival facts.
+- **Citation Validity**: Verification that all cited documents exist with non-empty archival metadata.
+- **Tamil Quality & Terminology**: Accurate Tamil toponymic categories and natural phrasing.
+- **Uncertainty Handling**: Strict declaration of uncertain/oral tradition without fabrication.
 
-2. **George Town (`id: 2`)**:
-   - Current Name: George Town (ஜார்ஜ் டவுன்)
-   - Historical Variant: Black Town (பிளாக் டவுன்)
-   - Documented Event: G.O. No. 158, Public Department, 3 March 1906.
-   - Sources: Tamil Nadu Archives Important Government Orders.
-
-3. **Tiruchirappalli (`id: 3`)**:
-   - Current Name: Tiruchirappalli (திருச்சிராப்பள்ளி)
-   - Historical English Form: Trichinopoly
-   - Type: Historical transliteration variant.
-
-4. **Thanjavur (`id: 4`)**:
-   - Current Name: Thanjavur (தஞ்சாவூர்)
-   - Historical English Form: Tanjore
-   - Type: Historical colonial spelling variant.
+To run the evaluation:
+```powershell
+python evaluate_rag.py
+python test_pipeline.py
+```

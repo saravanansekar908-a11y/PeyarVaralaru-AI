@@ -1,0 +1,56 @@
+{
+  "sources": [
+    {
+      "source": "Official directory of 38 district portals",
+      "direct_url": "https://tndistricts.nic.in/",
+      "use_notes": "Current list and links to district government portals."
+    },
+    {
+      "source": "Tamil Nadu Archives – District Gazetteers",
+      "direct_url": "https://tamilnaduarchives.tn.gov.in/WEB/EN/PAGE/GAZETTEERS",
+      "use_notes": "Primary starting point for historical district manuals and gazetteers; lists publication years and covered former districts."
+    },
+    {
+      "source": "Tamil Nadu Rural Development & Panchayat Raj – Databases",
+      "direct_url": "https://tnrd.tn.gov.in/databases.html",
+      "use_notes": "Official district, block, village panchayat and habitation datasets."
+    },
+    {
+      "source": "Integrated Government Online Directory – Tamil Nadu districts",
+      "direct_url": "https://igod.gov.in/sg/TN/E042/organizations",
+      "use_notes": "Government directory listing the state's 38 districts."
+    },
+    {
+      "source": "Census of India – Tamil Nadu administrative divisions map (2011)",
+      "direct_url": "https://censusindia.gov.in/nada/index.php/catalog/45244/download/48951/LSI_TAMIL_NADU.pdf",
+      "use_notes": "Historical administrative map; note it predates several recent district divisions."
+    },
+    {
+      "source": "Mayiladuthurai District – official portal",
+      "direct_url": "https://mayiladuthurai.nic.in/",
+      "use_notes": "Official source for the 2020 formation of Mayiladuthurai district and related G.O. details."
+    }
+  ],
+  "readme": [
+    {
+      "topic": "Purpose",
+      "guidance": "Research spreadsheet of Tamil Nadu's 38 districts, their administrative background, historical-name context and official portals."
+    },
+    {
+      "topic": "Important distinction",
+      "guidance": "Former administrative district, former English spelling, ancient settlement name, historical region (nadu/seemai), and newly formed district are different categories."
+    },
+    {
+      "topic": "Evidence policy",
+      "guidance": "Do not treat a regional name as the ancient name of the entire modern district unless the source explicitly supports that geographic scope."
+    },
+    {
+      "topic": "Change authority",
+      "guidance": "Where an exact Government Order or renaming authority has not been verified, the row says to verify it rather than guessing."
+    },
+    {
+      "topic": "Recommended next step",
+      "guidance": "For project/database use, add one record per name-claim with period, source title/page, URL, evidence type, geographic scope, and confidence."
+    }
+  ]
+}

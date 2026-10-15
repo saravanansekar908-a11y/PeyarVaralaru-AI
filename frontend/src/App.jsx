@@ -7,9 +7,11 @@ import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import SearchPage from './pages/SearchPage';
 import PlaceDetails from './pages/PlaceDetails';
+import Timeline from './pages/Timeline';
 import SourcesPage from './pages/SourcesPage';
 import AskAI from './pages/AskAI';
 import RelationshipGraph from './pages/RelationshipGraph';
+import DistrictDashboard from './pages/DistrictDashboard';
 
 function AppContent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,6 +38,9 @@ function AppContent() {
             <Route path="/search" element={<SearchPage />} />
             <Route path="/places" element={<Navigate to="/search" replace />} />
             <Route path="/places/:id" element={<PlaceDetails />} />
+            <Route path="/districts" element={<DistrictDashboard />} />
+            <Route path="/districts/:id" element={<DistrictDashboard />} />
+            <Route path="/timeline" element={<Timeline />} />
             <Route path="/sources" element={<SourcesPage />} />
             <Route path="/ask" element={<AskAI />} />
             <Route path="/graph" element={<RelationshipGraph />} />

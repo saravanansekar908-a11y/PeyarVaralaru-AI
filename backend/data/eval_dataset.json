@@ -1,0 +1,173 @@
+{
+  "benchmark_name": "PeyarVaralaru AI Historical Grounding Benchmark",
+  "version": "2.0.0",
+  "description": "Evaluation dataset of historical questions and independently checked reference facts covering Coimbatore, Villupuram, Tiruvannamalai, Arani, and Kalambur.",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "place": "Coimbatore",
+      "place_tamil": "கோயம்புத்தூர்",
+      "district": "Coimbatore",
+      "district_tamil": "கோயம்புத்தூர்",
+      "question_en": "What is the historical origin of the name Coimbatore?",
+      "question_ta": "கோயம்புத்தூர் என்ற பெயரின் வரலாறு மற்றும் பொருள் என்ன?",
+      "required_facts": [
+        "koyanputhur",
+        "kovan",
+        "perur",
+        "chola",
+        "patteeswarar"
+      ],
+      "required_facts_tamil": [
+        "கோயம்புத்தூர்",
+        "கோவன்",
+        "பேரூர்",
+        "சோழர்",
+        "பட்டீஸ்வரர்"
+      ],
+      "expected_evidence_level": "documented_fact",
+      "expected_uncertain": false,
+      "expected_document_title": "Coimbatore District Manual"
+    },
+    {
+      "id": "TC-02",
+      "place": "Villupuram",
+      "place_tamil": "விழுப்புரம்",
+      "district": "Villupuram",
+      "district_tamil": "விழுப்புரம்",
+      "question_en": "Why is Villupuram called Villupuram and what is its origin?",
+      "question_ta": "விழுப்புரம் என்ற ஊருக்கு பெயர் எப்படி வந்தது?",
+      "required_facts": [
+        "viluppuraiyan",
+        "chola",
+        "south arcot"
+      ],
+      "required_facts_tamil": [
+        "விழுப்புரையன்",
+        "சோழர்",
+        "தென் ஆற்காடு"
+      ],
+      "expected_evidence_level": "scholarly_hypothesis",
+      "expected_uncertain": false,
+      "expected_document_title": "South Arcot District Gazetteer"
+    },
+    {
+      "id": "TC-03",
+      "place": "Tiruvannamalai",
+      "place_tamil": "திருவண்ணாமலை",
+      "district": "Tiruvannamalai",
+      "district_tamil": "திருவண்ணாமலை",
+      "question_en": "How did Tiruvannamalai get its name and what do inscriptions record?",
+      "question_ta": "திருவண்ணாமலை என்ற பெயரின் தோற்றம் மற்றும் கல்வெட்டு சான்றுகள் என்ன?",
+      "required_facts": [
+        "annamalai",
+        "tevaram",
+        "chola",
+        "krishna deva raya"
+      ],
+      "required_facts_tamil": [
+        "அண்ணாமலை",
+        "தேவாரம்",
+        "கல்வெட்டு",
+        "சோழர்"
+      ],
+      "expected_evidence_level": "documented_fact",
+      "expected_uncertain": false,
+      "expected_document_title": "South Indian Inscriptions"
+    },
+    {
+      "id": "TC-04",
+      "place": "Arani",
+      "place_tamil": "ஆரணி",
+      "district": "Tiruvannamalai",
+      "district_tamil": "திருவண்ணாமலை",
+      "question_en": "What is the historical origin of Arani in Tiruvannamalai?",
+      "question_ta": "திருவண்ணாமலை மாவட்ட ஆரணி என்ற ஊரின் பெயர் வரலாறு என்ன?",
+      "required_facts": [
+        "aru",
+        "ani",
+        "kamandala",
+        "arnee",
+        "1751"
+      ],
+      "required_facts_tamil": [
+        "ஆறு",
+        "அணி",
+        "கமண்டல",
+        "1751",
+        "ஜாகீர்"
+      ],
+      "expected_evidence_level": "scholarly_hypothesis",
+      "expected_uncertain": false,
+      "expected_document_title": "North Arcot District Manual"
+    },
+    {
+      "id": "TC-05",
+      "place": "Kalambur",
+      "place_tamil": "கலம்பூர்",
+      "district": "Tiruvannamalai",
+      "district_tamil": "திருவண்ணாமலை",
+      "question_en": "Why is Kalambur called Kalambur and is its origin verified?",
+      "question_ta": "கலம்பூர் என்ற ஊரின் பெயர் காரணம் என்ன மற்றும் அது உறுதியாக நிறுவப்பட்டுள்ளதா?",
+      "required_facts": [
+        "aliyabad",
+        "polur",
+        "rice"
+      ],
+      "required_facts_tamil": [
+        "அலியாபாத்",
+        "போளூர்",
+        "நிச்சயமற்ற"
+      ],
+      "expected_evidence_level": "unknown_origin",
+      "expected_uncertain": true,
+      "expected_document_title": "Tiruvannamalai District Gazetteer"
+    },
+    {
+      "id": "TC-06",
+      "place": "Chennai",
+      "place_tamil": "சென்னை",
+      "district": "Chennai",
+      "district_tamil": "சென்னை",
+      "question_en": "What is the historical origin of the name Chennai?",
+      "question_ta": "சென்னை என்ற பெயர் வந்த வரலாறு என்ன?",
+      "required_facts": [
+        "chennappa",
+        "damarla",
+        "1639",
+        "madras"
+      ],
+      "required_facts_tamil": [
+        "சென்னப்ப",
+        "தாமர்லா",
+        "1639"
+      ],
+      "expected_evidence_level": "documented_fact",
+      "expected_uncertain": false,
+      "expected_document_title": "Madras in the Olden Time"
+    },
+    {
+      "id": "TC-07",
+      "place": "George Town",
+      "place_tamil": "ஜார்ஜ் டவுன்",
+      "district": "Chennai",
+      "district_tamil": "சென்னை",
+      "question_en": "Why was Black Town renamed to George Town and when?",
+      "question_ta": "பிளாக் டவுன் எப்போது ஜார்ஜ் டவுன் என பெயர் மாற்றப்பட்டது?",
+      "required_facts": [
+        "black town",
+        "1906",
+        "158",
+        "prince of wales"
+      ],
+      "required_facts_tamil": [
+        "பிளாக் டவுன்",
+        "1906",
+        "அரசாணை"
+      ],
+      "expected_evidence_level": "documented_fact",
+      "expected_uncertain": false,
+      "expected_document_title": "Fort St. George Gazette"
+    }
+  ]
+}

@@ -69,14 +69,9 @@ export const RelationshipGraph = () => {
             <div className="p-2 text-center">
               <div className="font-bold text-sm text-[#172B40] flex items-center justify-center gap-1">
                 <Landmark className="w-4 h-4 text-[#C5A66A]" />
-                <span>{placeNode.label}</span>
+                <span>{lang === 'ta' ? (placeNode.data?.current_name_tamil || placeNode.label) : placeNode.label}</span>
               </div>
-              {placeNode.data?.current_name_tamil && (
-                <div className="text-xs text-gray-500 font-medium">
-                  {placeNode.data.current_name_tamil}
-                </div>
-              )}
-              <span className="text-[10px] uppercase font-bold text-[#C5A66A] tracking-wider block mt-0.5">
+              <span className="text-[10px] uppercase font-bold text-[#C5A66A] tracking-wider block mt-1">
                 {lang === 'ta' ? 'தற்போதைய இடம்' : 'Current Place'}
               </span>
             </div>
@@ -105,10 +100,10 @@ export const RelationshipGraph = () => {
             <div className="p-1.5 text-center">
               <div className="font-bold text-xs text-[#92400E] flex items-center justify-center gap-1">
                 <Tag className="w-3 h-3 text-[#C5A66A]" />
-                <span>{hn.label}</span>
+                <span>{lang === 'ta' ? (hn.data?.historical_name_tamil || hn.label) : hn.label}</span>
               </div>
               <span className="text-[10px] text-gray-500 block">
-                {hn.data?.name_type || 'Variant'}
+                {lang === 'ta' ? 'வரலாற்றுப் பெயர்' : (hn.data?.name_type || 'Variant')}
               </span>
             </div>
           ),
@@ -138,7 +133,7 @@ export const RelationshipGraph = () => {
                 <span>{evt.label}</span>
               </div>
               <span className="text-[10px] text-emerald-700 block mt-0.5 font-medium">
-                {evt.data?.event_type || 'Event'}
+                {lang === 'ta' ? 'வரலாற்று நிகழ்வு' : (evt.data?.event_type || 'Event')}
               </span>
             </div>
           ),
@@ -186,30 +181,41 @@ export const RelationshipGraph = () => {
     });
 
     // Format edges with labels and smooth step markers
-    const formattedEdges = rawEdges.map((e) => ({
-      id: e.id,
-      source: e.source,
-      target: e.target,
-      label: e.label,
-      animated: e.label === 'CHANGED_ON',
-      style: {
-        stroke: e.label === 'CHANGED_ON' ? '#059669' : e.label === 'SUPPORTED_BY' ? '#2563EB' : '#C5A66A',
-        strokeWidth: 2,
-      },
-      labelStyle: {
-        fontSize: 10,
-        fontWeight: 600,
-        fill: '#172B40',
-      },
-      labelBgStyle: {
-        fill: '#FFFFFF',
-        fillOpacity: 0.9,
-      },
-      markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: e.label === 'CHANGED_ON' ? '#059669' : e.label === 'SUPPORTED_BY' ? '#2563EB' : '#C5A66A',
-      },
-    }));
+    const formattedEdges = rawEdges.map((e) => {
+      let localizedLabel = e.label;
+      if (e.label === 'CHANGED_ON') {
+        localizedLabel = lang === 'ta' ? 'பெயர் மாற்றம்' : 'Renamed on';
+      } else if (e.label === 'SUPPORTED_BY') {
+        localizedLabel = lang === 'ta' ? 'சான்றாதார ஆவணம்' : 'Supported by';
+      } else if (e.label === 'HAS_HISTORICAL_NAME') {
+        localizedLabel = lang === 'ta' ? 'பழைய பெயர்' : 'Historical name';
+      }
+
+      return {
+        id: e.id,
+        source: e.source,
+        target: e.target,
+        label: localizedLabel,
+        animated: e.label === 'CHANGED_ON',
+        style: {
+          stroke: e.label === 'CHANGED_ON' ? '#059669' : e.label === 'SUPPORTED_BY' ? '#2563EB' : '#C5A66A',
+          strokeWidth: 2,
+        },
+        labelStyle: {
+          fontSize: 10,
+          fontWeight: 600,
+          fill: '#172B40',
+        },
+        labelBgStyle: {
+          fill: '#FFFFFF',
+          fillOpacity: 0.9,
+        },
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: e.label === 'CHANGED_ON' ? '#059669' : e.label === 'SUPPORTED_BY' ? '#2563EB' : '#C5A66A',
+        },
+      };
+    });
 
     return { nodes: formattedNodes, edges: formattedEdges };
   };
@@ -229,7 +235,7 @@ export const RelationshipGraph = () => {
       }
     };
     loadGraph();
-  }, [selectedPlaceId]);
+  }, [selectedPlaceId, lang]);
 
   const onNodeClick = useCallback((event, node) => {
     if (node.data?.raw) {
@@ -247,32 +253,33 @@ export const RelationshipGraph = () => {
   return (
     <div className="space-y-4 max-w-6xl mx-auto py-2">
       {/* Top Header & Selector */}
-      <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-[#C5A66A]/20 text-[#172B40] flex items-center justify-center shrink-0">
-            <Network className="w-5 h-5 text-[#C5A66A]" />
+      <div className="bg-[#172B40] text-white rounded-2xl p-6 border border-[#2A3E54] shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative overflow-hidden">
+        <div className="absolute right-0 top-0 w-64 h-64 bg-[#C5A66A]/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="relative z-10 flex items-center gap-3.5">
+          <div className="w-11 h-11 rounded-xl bg-[#C5A66A] text-[#172B40] flex items-center justify-center shrink-0 shadow-md">
+            <Network className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-[#172B40]">
-              {t('graph.title', 'Historical Relationship Explorer')}
-            </h2>
-            <p className="text-xs text-gray-500">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+              {lang === 'ta' ? 'வரலாற்று உறவு வரைபடம்' : 'Historical Relationship Explorer'}
+            </h1>
+            <p className="text-xs text-gray-300">
               {lang === 'ta'
-                ? 'ஊர்கள், வரலாற்றுப் பெயர்கள், மாற்ற நிகழ்வுகள் மற்றும் ஆவணங்களுக்கிடையேயான உறவுகள்'
+                ? 'ஊர்கள், வரலாற்றுப் பெயர்கள், மாற்ற நிகழ்வுகள் மற்றும் மூல ஆவணங்களுக்கிடையேயான தொடர்புகள்'
                 : 'Interactive relational network of places, historical names, events, and primary sources.'}
             </p>
           </div>
         </div>
 
         {/* Place Dropdown */}
-        <div className="flex items-center gap-2">
-          <label className="text-xs font-semibold text-gray-600 shrink-0">
-            {lang === 'ta' ? 'இடத்தைத் தேர்ந்தெடுக்கவும்:' : 'Select place:'}
+        <div className="relative z-10 flex items-center gap-2 bg-[#0F1D2C] p-2 rounded-xl border border-[#2C3F55]">
+          <label className="text-xs font-semibold text-[#C5A66A] shrink-0 pl-1">
+            {lang === 'ta' ? 'இடம் தேர்வு:' : 'Select place:'}
           </label>
           <select
             value={selectedPlaceId}
             onChange={handlePlaceChange}
-            className="px-3 py-1.5 bg-[#F7F4ED] border border-gray-300 rounded-lg text-xs font-semibold text-[#172B40] focus:outline-none focus:border-[#C5A66A]"
+            className="px-3 py-1.5 bg-[#172B40] border border-[#2C3F55] rounded-lg text-xs font-bold text-white focus:outline-none focus:border-[#C5A66A]"
           >
             {placesList.map((p) => (
               <option key={p.id} value={p.id}>

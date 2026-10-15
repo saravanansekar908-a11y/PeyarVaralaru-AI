@@ -1,0 +1,344 @@
+[
+  {
+    "no": 1,
+    "district_english": "Ariyalur",
+    "district_tamil": "அரியலூர்",
+    "former_administrative_name_history": "Formerly part of the composite Tiruchirappalli district; became a separate district in 2001 (later reorganised).",
+    "ancient_or_historical_name_context": "Administrative division; no single verified ancient name for the whole modern district.",
+    "change_date_authority_verification_notes": "Verify exact formation/reorganisation dates in government orders and gazetteers.",
+    "official_district_portal": "https://ariyalur.nic.in/"
+  },
+  {
+    "no": 2,
+    "district_english": "Chengalpattu",
+    "district_tamil": "செங்கல்பட்டு",
+    "former_administrative_name_history": "Part of the historic Chengalpattu region; modern district re-established in 2019 from Kancheepuram district.",
+    "ancient_or_historical_name_context": "Historical regional name: Chengalpattu; not a distinct ancient name for all current boundaries.",
+    "change_date_authority_verification_notes": "Tamil Nadu Government; verify the exact G.O. for formation details.",
+    "official_district_portal": "https://chengalpattu.nic.in/"
+  },
+  {
+    "no": 3,
+    "district_english": "Chennai",
+    "district_tamil": "சென்னை",
+    "former_administrative_name_history": "Formerly Madras; the city was officially renamed Chennai in 1996. Earlier colonial administrative history is associated with Madras.",
+    "ancient_or_historical_name_context": "Madras is the former official English name; ancient names of specific settlements in the wider area should be recorded separately.",
+    "change_date_authority_verification_notes": "Tamil Nadu Government; official renaming in 1996. Check gazette/official history for the order details.",
+    "official_district_portal": "https://chennai.nic.in/"
+  },
+  {
+    "no": 4,
+    "district_english": "Coimbatore",
+    "district_tamil": "கோயம்புத்தூர்",
+    "former_administrative_name_history": "Historically part of the Kongu region; the former district covered a larger area before later districts were split off.",
+    "ancient_or_historical_name_context": "Kongu Nadu is a historical region, not a former official name for the entire current district.",
+    "change_date_authority_verification_notes": "Use district history and Coimbatore Gazetteer for source-backed details.",
+    "official_district_portal": "https://coimbatore.nic.in/"
+  },
+  {
+    "no": 5,
+    "district_english": "Cuddalore",
+    "district_tamil": "கடலூர்",
+    "former_administrative_name_history": "Associated with the former South Arcot district; modern district boundaries differ from the former district.",
+    "ancient_or_historical_name_context": "South Arcot was an earlier administrative district; not an ancient name for the current district.",
+    "change_date_authority_verification_notes": "Use South Arcot Gazetteer and current district history.",
+    "official_district_portal": "https://cuddalore.nic.in/"
+  },
+  {
+    "no": 6,
+    "district_english": "Dharmapuri",
+    "district_tamil": "தருமபுரி",
+    "former_administrative_name_history": "Separated from Salem district in 1965; Krishnagiri was later separated from Dharmapuri.",
+    "ancient_or_historical_name_context": "Tagadur is a historical name associated with the region, especially the Adhiyaman centre; geographic scope should be checked.",
+    "change_date_authority_verification_notes": "Use Dharmapuri District Gazetteer and official history.",
+    "official_district_portal": "https://dharmapuri.nic.in/"
+  },
+  {
+    "no": 7,
+    "district_english": "Dindigul",
+    "district_tamil": "திண்டுக்கல்",
+    "former_administrative_name_history": "Historically part of Madurai district; became a separate district in 1985.",
+    "ancient_or_historical_name_context": "No single verified ancient name for the whole modern district; record historic towns and regions separately.",
+    "change_date_authority_verification_notes": "Use official district history and Madurai Gazetteer.",
+    "official_district_portal": "https://dindigul.nic.in/"
+  },
+  {
+    "no": 8,
+    "district_english": "Erode",
+    "district_tamil": "ஈரோடு",
+    "former_administrative_name_history": "Associated with Kongu region; formerly within the larger Coimbatore district and made separate in 1979.",
+    "ancient_or_historical_name_context": "Kongu Nadu is a historical regional association, not a former official district name.",
+    "change_date_authority_verification_notes": "Tamil Nadu Archives lists an Erode District Gazetteer (2016).",
+    "official_district_portal": "https://erode.nic.in/"
+  },
+  {
+    "no": 9,
+    "district_english": "Kallakurichi",
+    "district_tamil": "கள்ளக்குறிச்சி",
+    "former_administrative_name_history": "Separated from Viluppuram district in 2019.",
+    "ancient_or_historical_name_context": "No single verified ancient name for the whole modern district; historical sites should be catalogued individually.",
+    "change_date_authority_verification_notes": "Verify formation date/order in official district history and government order.",
+    "official_district_portal": "https://kallakurichi.nic.in/"
+  },
+  {
+    "no": 10,
+    "district_english": "Kancheepuram",
+    "district_tamil": "காஞ்சிபுரம்",
+    "former_administrative_name_history": "Historic Kanchipuram was a major Pallava centre; modern district was reduced when Chengalpattu was formed in 2019.",
+    "ancient_or_historical_name_context": "Kanchi/Kanchipuram are historical names of the city; do not automatically apply them to all district territory.",
+    "change_date_authority_verification_notes": "Use official district history and Kancheepuram & Thiruvallur Gazetteer (2000).",
+    "official_district_portal": "https://kancheepuram.nic.in/"
+  },
+  {
+    "no": 11,
+    "district_english": "Kanniyakumari",
+    "district_tamil": "கன்னியாகுமரி",
+    "former_administrative_name_history": "Formed in 1956 from territories transferred from Travancore-Cochin to Madras State during States Reorganisation.",
+    "ancient_or_historical_name_context": "Nanjil Nadu is a historical regional name associated with parts of the present district; not necessarily the whole district.",
+    "change_date_authority_verification_notes": "Use Kanniyakumari District Gazetteer (1995) and official district history.",
+    "official_district_portal": "https://kanniyakumari.nic.in/"
+  },
+  {
+    "no": 12,
+    "district_english": "Karur",
+    "district_tamil": "கரூர்",
+    "former_administrative_name_history": "Historically associated with Karuvoor and the Kongu region; separated from composite Tiruchirappalli district in 1995.",
+    "ancient_or_historical_name_context": "Karuvoor is a historical form associated with Karur town; verify context and period before classifying.",
+    "change_date_authority_verification_notes": "Use Composite Tiruchirappalli Gazetteer (1998) and official district history.",
+    "official_district_portal": "https://karur.nic.in/"
+  },
+  {
+    "no": 13,
+    "district_english": "Krishnagiri",
+    "district_tamil": "கிருஷ்ணகிரி",
+    "former_administrative_name_history": "Separated from Dharmapuri district in 2004.",
+    "ancient_or_historical_name_context": "The wider area has historical associations with Hosur and Baramahal; these are regional/historical terms, not proven former names of the entire district.",
+    "change_date_authority_verification_notes": "Verify date and scope with official district history and records.",
+    "official_district_portal": "https://krishnagiri.nic.in/"
+  },
+  {
+    "no": 14,
+    "district_english": "Madurai",
+    "district_tamil": "மதுரை",
+    "former_administrative_name_history": "An ancient city and historic Pandya centre; the present district boundaries are modern administrative boundaries.",
+    "ancient_or_historical_name_context": "Koodal and Madurai occur in historical/literary traditions; identify each source and period.",
+    "change_date_authority_verification_notes": "Use Madurai District Gazetteer (1906; revised 1960) and official district history.",
+    "official_district_portal": "https://madurai.nic.in/"
+  },
+  {
+    "no": 15,
+    "district_english": "Mayiladuthurai",
+    "district_tamil": "மயிலாடுதுறை",
+    "former_administrative_name_history": "The district was carved out of Nagapattinam district in 2020 and became Tamil Nadu's 38th district.",
+    "ancient_or_historical_name_context": "The town is associated with historical names Mayavaram and Mayurapuram; town names are not automatically district-wide ancient names.",
+    "change_date_authority_verification_notes": "Official portal records formation by G.O. (Ms.) No. 796 dated 28-12-2020; consult official history for town-name history.",
+    "official_district_portal": "https://mayiladuthurai.nic.in/"
+  },
+  {
+    "no": 16,
+    "district_english": "Nagapattinam",
+    "district_tamil": "நாகப்பட்டினம்",
+    "former_administrative_name_history": "Part of the former Thanjavur district before becoming a separate district in 1991; Mayiladuthurai was later separated.",
+    "ancient_or_historical_name_context": "Historic port and Chola maritime region; no single ancient name should be assigned to the whole current district without evidence.",
+    "change_date_authority_verification_notes": "Use official district history and Thanjavur/Nagapattinam historical sources.",
+    "official_district_portal": "https://nagapattinam.nic.in/"
+  },
+  {
+    "no": 17,
+    "district_english": "Namakkal",
+    "district_tamil": "நாமக்கல்",
+    "former_administrative_name_history": "Separated from Salem district in 1997.",
+    "ancient_or_historical_name_context": "Associated with the Kongu region; this is a historical region, not an official former district name.",
+    "change_date_authority_verification_notes": "Verify details through official district history and Salem Gazetteer.",
+    "official_district_portal": "https://namakkal.nic.in/"
+  },
+  {
+    "no": 18,
+    "district_english": "The Nilgiris",
+    "district_tamil": "நீலகிரி",
+    "former_administrative_name_history": "Hill district with a distinctive colonial-era administrative history; present boundaries and administrative structures evolved over time.",
+    "ancient_or_historical_name_context": "Nilgiri Hills is a geographical/historical name; indigenous place names should be researched locally and individually.",
+    "change_date_authority_verification_notes": "Tamil Nadu Archives lists The Nilgiris Gazetteers/manuals, including 1880 and 1995 editions.",
+    "official_district_portal": "https://nilgiris.nic.in/"
+  },
+  {
+    "no": 19,
+    "district_english": "Perambalur",
+    "district_tamil": "பெரம்பலூர்",
+    "former_administrative_name_history": "Separated from the composite Tiruchirappalli district in 1995; boundaries changed as districts were reorganised.",
+    "ancient_or_historical_name_context": "No single verified ancient name for the whole modern district.",
+    "change_date_authority_verification_notes": "Use Composite Tiruchirappalli Gazetteer (1998) and official district history.",
+    "official_district_portal": "https://perambalur.nic.in/"
+  },
+  {
+    "no": 20,
+    "district_english": "Pudukkottai",
+    "district_tamil": "புதுக்கோட்டை",
+    "former_administrative_name_history": "Associated with the former princely state of Pudukkottai, which merged with India in 1948; district formed in 1974.",
+    "ancient_or_historical_name_context": "Pudukkottai was the name of the princely state and town; scope should be distinguished from ancient regional names.",
+    "change_date_authority_verification_notes": "Use Pudukkottai District Gazetteer (1983) and official district history.",
+    "official_district_portal": "https://pudukkottai.nic.in/"
+  },
+  {
+    "no": 21,
+    "district_english": "Ramanathapuram",
+    "district_tamil": "இராமநாதபுரம்",
+    "former_administrative_name_history": "Historically also called Ramnad in English usage; district boundaries have changed over time.",
+    "ancient_or_historical_name_context": "Ramnad is a former English usage; Sethupathi country/territory is a historical association, not necessarily the same boundary.",
+    "change_date_authority_verification_notes": "Use Ramanathapuram Gazetteer (1973) and official district history.",
+    "official_district_portal": "https://ramanathapuram.nic.in/"
+  },
+  {
+    "no": 22,
+    "district_english": "Ranipet",
+    "district_tamil": "ராணிப்பேட்டை",
+    "former_administrative_name_history": "Separated from Vellore district in 2019.",
+    "ancient_or_historical_name_context": "No single verified ancient name for the whole modern district; research towns and former North Arcot history separately.",
+    "change_date_authority_verification_notes": "Verify exact formation details in official district history/government order.",
+    "official_district_portal": "https://ranipet.nic.in/"
+  },
+  {
+    "no": 23,
+    "district_english": "Salem",
+    "district_tamil": "சேலம்",
+    "former_administrative_name_history": "The historic Salem district covered a larger area before multiple districts were separated.",
+    "ancient_or_historical_name_context": "Associated with the Kongu region; this is a regional historical context rather than an old official name for all current boundaries.",
+    "change_date_authority_verification_notes": "Tamil Nadu Archives lists Salem manuals/gazetteers, including 1883 and 1918 editions and a 1967 gazetteer.",
+    "official_district_portal": "https://salem.nic.in/"
+  },
+  {
+    "no": 24,
+    "district_english": "Sivaganga",
+    "district_tamil": "சிவகங்கை",
+    "former_administrative_name_history": "Associated with the former Sivaganga kingdom and the Maruthu Pandiyar period; district formed in 1985.",
+    "ancient_or_historical_name_context": "Sivaganga kingdom is a historical polity; not an ancient name for the entire present district.",
+    "change_date_authority_verification_notes": "Use official district history and Ramanathapuram regional gazetteer.",
+    "official_district_portal": "https://sivaganga.nic.in/"
+  },
+  {
+    "no": 25,
+    "district_english": "Tenkasi",
+    "district_tamil": "தென்காசி",
+    "former_administrative_name_history": "Separated from Tirunelveli district in 2019.",
+    "ancient_or_historical_name_context": "Associated with the later Pandya history of the wider region; not a single verified ancient name for the whole modern district.",
+    "change_date_authority_verification_notes": "Verify formation date and government order through official district history.",
+    "official_district_portal": "https://tenkasi.nic.in/"
+  },
+  {
+    "no": 26,
+    "district_english": "Thanjavur",
+    "district_tamil": "தஞ்சாவூர்",
+    "former_administrative_name_history": "A major Chola political and cultural centre; district boundaries changed during later administrative reorganisation.",
+    "ancient_or_historical_name_context": "Thanjai/Thanjavur are historical names associated with the town; Chola heartland is a regional description.",
+    "change_date_authority_verification_notes": "Use Thanjavur Gazetteers (1906, 1957) and official district history.",
+    "official_district_portal": "https://thanjavur.nic.in/"
+  },
+  {
+    "no": 27,
+    "district_english": "Theni",
+    "district_tamil": "தேனி",
+    "former_administrative_name_history": "Separated from Madurai district in 1996.",
+    "ancient_or_historical_name_context": "Western Ghats and Vaigai basin are geographical/historical contexts; no single verified ancient district-wide name.",
+    "change_date_authority_verification_notes": "Use official district history and Madurai regional sources.",
+    "official_district_portal": "https://theni.nic.in/"
+  },
+  {
+    "no": 28,
+    "district_english": "Thoothukudi",
+    "district_tamil": "தூத்துக்குடி",
+    "former_administrative_name_history": "Known as Tuticorin in colonial English usage; separated from Tirunelveli district in 1986.",
+    "ancient_or_historical_name_context": "Tuticorin is a former English name/spelling; the coastal area has a long pearl-fishing and maritime history.",
+    "change_date_authority_verification_notes": "Tamil Nadu Archives lists Thoothukudi District Gazetteer (2007).",
+    "official_district_portal": "https://thoothukudi.nic.in/"
+  },
+  {
+    "no": 29,
+    "district_english": "Tiruchirappalli",
+    "district_tamil": "திருச்சிராப்பள்ளி",
+    "former_administrative_name_history": "Known as Trichinopoly in colonial English usage; the former composite district included areas now in Karur and Perambalur.",
+    "ancient_or_historical_name_context": "Trichinopoly is a colonial English form; historical names for individual sites should be recorded separately.",
+    "change_date_authority_verification_notes": "Use Tiruchirappalli Gazetteers/manuals (1878; 1998 composite gazetteer) and official history.",
+    "official_district_portal": "https://tiruchirappalli.nic.in/"
+  },
+  {
+    "no": 30,
+    "district_english": "Tirunelveli",
+    "district_tamil": "திருநெல்வேலி",
+    "former_administrative_name_history": "Known as Tinnevelly in colonial English records; Tenkasi was separated in 2019.",
+    "ancient_or_historical_name_context": "Tirunelveli Seemai is a historical regional expression; verify its period and exact geographic scope.",
+    "change_date_authority_verification_notes": "Use Tirunelveli Gazetteers (1917 and 2002) and official district history.",
+    "official_district_portal": "https://tirunelveli.nic.in/"
+  },
+  {
+    "no": 31,
+    "district_english": "Tirupathur",
+    "district_tamil": "திருப்பத்தூர்",
+    "former_administrative_name_history": "Separated from Vellore district in 2019.",
+    "ancient_or_historical_name_context": "No single verified ancient name for the whole modern district; research the former North Arcot region and individual sites.",
+    "change_date_authority_verification_notes": "Verify formation date/order in official district history.",
+    "official_district_portal": "https://tirupathur.nic.in/"
+  },
+  {
+    "no": 32,
+    "district_english": "Tiruppur",
+    "district_tamil": "திருப்பூர்",
+    "former_administrative_name_history": "Formed as a separate district in 2009 from parts of Coimbatore and Erode districts.",
+    "ancient_or_historical_name_context": "Associated with the Kongu region; not a former official district-wide ancient name.",
+    "change_date_authority_verification_notes": "Use official district history and Coimbatore/Erode gazetteers.",
+    "official_district_portal": "https://tiruppur.nic.in/"
+  },
+  {
+    "no": 33,
+    "district_english": "Tiruvallur",
+    "district_tamil": "திருவள்ளூர்",
+    "former_administrative_name_history": "Separated from the larger Chengalpattu administrative region in 1997.",
+    "ancient_or_historical_name_context": "Historical places within the district have their own names; no single verified ancient name for the whole current district.",
+    "change_date_authority_verification_notes": "Use Kancheepuram & Thiruvallur Gazetteer (2000) and official district history.",
+    "official_district_portal": "https://tiruvallur.nic.in/"
+  },
+  {
+    "no": 34,
+    "district_english": "Tiruvannamalai",
+    "district_tamil": "திருவண்ணாமலை",
+    "former_administrative_name_history": "Separated from the former North Arcot district in 1989.",
+    "ancient_or_historical_name_context": "Arunachala/Annamalai are historical names associated with the sacred hill and temple town, not necessarily the entire district.",
+    "change_date_authority_verification_notes": "Use official district history and North Arcot records.",
+    "official_district_portal": "https://tiruvannamalai.nic.in/"
+  },
+  {
+    "no": 35,
+    "district_english": "Tiruvarur",
+    "district_tamil": "திருவாரூர்",
+    "former_administrative_name_history": "Separated from Thanjavur district in 1997.",
+    "ancient_or_historical_name_context": "Historic temple town and Chola cultural region; no single verified ancient name for the entire modern district.",
+    "change_date_authority_verification_notes": "Use Thanjavur Gazetteer and official district history.",
+    "official_district_portal": "https://tiruvarur.nic.in/"
+  },
+  {
+    "no": 36,
+    "district_english": "Vellore",
+    "district_tamil": "வேலூர்",
+    "former_administrative_name_history": "Part of the former North Arcot district; district boundaries changed after Ranipet and Tirupathur were formed in 2019.",
+    "ancient_or_historical_name_context": "Vellore fort and town have documented historical importance; North Arcot is the former administrative district context.",
+    "change_date_authority_verification_notes": "Use North Arcot manuals (1881, 1895) and Kancheepuram/Thiruvallur historical records as relevant.",
+    "official_district_portal": "https://vellore.nic.in/"
+  },
+  {
+    "no": 37,
+    "district_english": "Viluppuram",
+    "district_tamil": "விழுப்புரம்",
+    "former_administrative_name_history": "Formed from the former South Arcot administrative region in 1993; Kallakurichi was separated in 2019.",
+    "ancient_or_historical_name_context": "South Arcot is a former administrative district, not an ancient name for the current district.",
+    "change_date_authority_verification_notes": "Use South Arcot Gazetteers (1906, 1962) and official district history.",
+    "official_district_portal": "https://viluppuram.nic.in/"
+  },
+  {
+    "no": 38,
+    "district_english": "Virudhunagar",
+    "district_tamil": "விருதுநகர்",
+    "former_administrative_name_history": "Formed as a separate district in 1985 from areas of the former Ramanathapuram district.",
+    "ancient_or_historical_name_context": "No single verified ancient name for the whole modern district; regional history should be sourced locality by locality.",
+    "change_date_authority_verification_notes": "Use Ramanathapuram Gazetteer and official district history.",
+    "official_district_portal": "https://virudhunagar.nic.in/"
+  }
+]

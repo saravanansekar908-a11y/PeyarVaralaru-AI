@@ -25,18 +25,59 @@ def seed_database(db: Session) -> bool:
         data = json.load(f)
 
     # 1. Sync places
+    valid_seed_ids = set()
     for p in data["places"]:
+        valid_seed_ids.add(p["id"])
         place = db.query(Place).filter(Place.id == p["id"]).first()
         if not place:
             place = Place(id=p["id"])
             db.add(place)
         place.current_name = p["current_name"]
         place.current_name_tamil = p.get("current_name_tamil")
-        place.district = p.get("district")
+        place.place_name_english = p.get("place_name_english") or p["current_name"]
+        place.place_name_tamil = p.get("place_name_tamil") or p.get("current_name_tamil")
+        
+        # State and district are separate fields — district must NEVER be the state name
+        dist_val = p.get("district")
+        if dist_val == "Tamil Nadu":
+            dist_val = None
+        place.state = p.get("state", "Tamil Nadu")
+        place.state_tamil = p.get("state_tamil", "தமிழ்நாடு")
+        place.district = dist_val
+        place.district_tamil = p.get("district_tamil")
+        place.taluk = p.get("taluk")
+        place.taluk_tamil = p.get("taluk_tamil")
+        place.category = p.get("category")
+        place.category_tamil = p.get("category_tamil")
         place.latitude = p.get("latitude")
         place.longitude = p.get("longitude")
         place.description = p.get("description")
         place.description_tamil = p.get("description_tamil")
+        place.meaning_tamil = p.get("meaning_tamil")
+        place.origin_tamil = p.get("origin_tamil")
+        place.village = p.get("village")
+        place.village_tamil = p.get("village_tamil")
+        place.name_origin_type = p.get("name_origin_type", "documented_fact")
+        place.evidence_status = p.get("evidence_status", "verified")
+        
+        # Structured research fields
+        place.historical_period = p.get("historical_period")
+        place.name_origin_explanation = p.get("name_origin_explanation") or p.get("origin_tamil")
+        place.origin_evidence_status = p.get("origin_evidence_status") or p.get("name_origin_type") or "historically_documented"
+        place.historical_events_summary = p.get("historical_events_summary")
+        place.source_title = p.get("source_title")
+        place.source_url = p.get("source_url")
+        place.source_page = p.get("source_page")
+        place.evidence_quote = p.get("evidence_quote")
+        place.verification_status = p.get("verification_status") or p.get("evidence_status") or "verified"
+        place.is_cached_research = 0  # seed records are curated, not AI-generated
+    
+    # Purge any spurious / unverified cached entries in database
+    db.query(Place).filter(
+        (Place.district == "Tamil Nadu") | 
+        (Place.taluk == "Tamil Nadu Taluk") |
+        (~Place.id.in_(valid_seed_ids))
+    ).delete(synchronize_session=False)
     db.flush()
 
     # 2. Sync historical names

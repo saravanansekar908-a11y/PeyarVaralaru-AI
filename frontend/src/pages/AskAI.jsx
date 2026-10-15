@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useTranslation } from '../services/LanguageContext';
 import { askAI } from '../services/api';
 import { 
@@ -7,291 +7,320 @@ import {
   Sparkles, 
   BookOpen, 
   ExternalLink, 
-  ShieldAlert, 
   MapPin, 
   FileText,
   User,
-  Database
+  Database,
+  CheckCircle2,
+  AlertTriangle,
+  HelpCircle,
+  Building,
+  RotateCcw
 } from 'lucide-react';
 
 export const AskAI = () => {
   const { lang, t } = useTranslation();
   const [inputVal, setInputVal] = useState('');
   const [loading, setLoading] = useState(false);
-  const [chatHistory, setChatHistory] = useState([
-    {
-      role: 'assistant',
-      text:
-        lang === 'ta'
-          ? 'வணக்கம்! நான் பெயர்வரலாறு AI வரலாற்று ஆய்வாளர். தமிழ்நாடு ஆவணக் காப்பகம் மற்றும் அரசிதழ் பதிவுகள் அடிப்படையில் தமிழக ஊர்ப் பெயர்களின் பரிணாமம், பெயர் மாற்றங்கள் மற்றும் பழைய வடிவங்கள் பற்றிய உங்கள் கேள்விகளுக்குப் பதிலளிக்க முடியும்.'
-          : 'Welcome! I am PeyarVaralaru AI Research Assistant. Ask me about historical place names, official renamings, and spelling variants grounded in Tamil Nadu archival records.',
-      sources: [],
-      places: [],
-      isInitial: true,
-    },
-  ]);
+  const [districtHint, setDistrictHint] = useState('');
+  const messagesEndRef = useRef(null);
+
+  const initialGreeting = useMemo(() => ({
+    id: 'initial',
+    role: 'assistant',
+    text:
+      lang === 'ta'
+        ? 'வணக்கம்! நான் பெயர்வரலாறு AI வரலாற்று ஆய்வாளர். தமிழ்நாடு ஆவணக் காப்பகம், கல்வெட்டுகள் மற்றும் மாவட்ட அரசிதழ்கள் அடிப்படையில் தமிழக ஊர்ப் பெயர்களின் பரிணாமம், பழைய பெயர்கள் மற்றும் பெயர் மாற்றங்கள் பற்றிய உங்கள் கேள்விகளுக்குச் சான்றாதாரங்களுடன் பதிலளிக்க முடியும்.'
+        : 'Welcome! I am the PeyarVaralaru AI Historical Research Assistant. Ask me about historical place names, official renamings, and inscriptional origins grounded in verified archival publications.',
+    sources: [],
+    passages: [],
+    evidence_status: 'verified',
+    isInitial: true,
+  }), [lang]);
+
+  const [chatHistory, setChatHistory] = useState([]);
+
+  // Sync initial message when lang changes if chat is empty or initial
+  useEffect(() => {
+    setChatHistory((prev) => {
+      if (prev.length === 0 || (prev.length === 1 && prev[0].isInitial)) {
+        return [initialGreeting];
+      }
+      return prev.map(msg => msg.isInitial ? initialGreeting : msg);
+    });
+  }, [initialGreeting]);
 
   const suggestions = [
     {
-      label:
-        lang === 'ta'
-          ? 'மெட்ராஸ் என்ற பெயரின் வரலாறு என்ன?'
-          : 'What is the history of the name Madras?',
-      q:
-        lang === 'ta'
-          ? 'மெட்ராஸ் என்ற பெயரின் வரலாறு என்ன?'
-          : 'What is the history of the name Madras?',
+      label_ta: 'ஆரணி என்ற ஊரின் பெயர் காரணம் என்ன?',
+      label_en: 'Why is Arani called Arani?',
+      q_ta: 'ஆரணி என்ற ஊரின் பெயர் வரலாறு மற்றும் கமண்டல நாக நதி தொடர்பு என்ன?',
+      q_en: 'What is the historical origin of the name Arani and its link to the Kamandala Naga river?'
     },
     {
-      label:
-        lang === 'ta'
-          ? 'பிளாக் டவுன் எப்போது ஜார்ஜ் டவுன் என மாற்றப்பட்டது?'
-          : 'When was Black Town renamed to George Town?',
-      q:
-        lang === 'ta'
-          ? 'பிளாக் டவுன் எப்போது ஜார்ஜ் டவுன் என மாற்றப்பட்டது?'
-          : 'When was Black Town renamed to George Town?',
+      label_ta: 'திருவண்ணாமலை சோழர் கல்வெட்டுகள் என்ன கூறுகின்றன?',
+      label_en: 'What do Chola epigraphs say about Tiruvannamalai?',
+      q_ta: 'திருவண்ணாமலை சோழர் மற்றும் விஜயநகர கல்வெட்டுகளில் எவ்வாறு ஆவணப்படுத்தப்பட்டுள்ளது?',
+      q_en: 'How is Tiruvannamalai documented in Chola and Vijayanagara stone inscriptions?'
     },
     {
-      label:
-        lang === 'ta'
-          ? 'திருச்சிராப்பள்ளி மற்றும் தஞ்சாவூரின் ஆங்கில வரலாற்றுப் பெயர்கள் என்ன?'
-          : 'What were the historical English forms of Tiruchirappalli and Thanjavur?',
-      q:
-        lang === 'ta'
-          ? 'திருச்சிராப்பள்ளி மற்றும் தஞ்சாவூரின் ஆங்கில வரலாற்றுப் பெயர்கள் என்ன?'
-          : 'What were the historical English forms of Tiruchirappalli and Thanjavur?',
+      label_ta: 'மெட்ராஸ் எப்போது சென்னை என அதிகாரப்பூர்வமாக மாறியது?',
+      label_en: 'When was Madras officially renamed to Chennai?',
+      q_ta: 'மெட்ராஸ் என்பது சென்னை என எப்போது மறுபெயரிடப்பட்டது? அரசாணை எண் என்ன?',
+      q_en: 'When was Madras officially renamed to Chennai? What was the Government Order number?'
     },
     {
-      label:
-        lang === 'ta'
-          ? 'அதிகாரப்பூர்வ பெயர் மாற்றத்திற்கும் வரலாற்று எழுத்துப் பிழைக்கும் உள்ள வேறுபாடு என்ன?'
-          : 'What is the difference between an official renaming and a spelling variant?',
-      q:
-        lang === 'ta'
-          ? 'அதிகாரப்பூர்வ பெயர் மாற்றத்திற்கும் வரலாற்று எழுத்துப் பிழைக்கும் உள்ள வேறுபாடு என்ன?'
-          : 'What is the difference between an official renaming and a spelling variant?',
+      label_ta: 'தஞ்சாவூர் பெயர்தோற்றம் வாய்மொழி மரபா அல்லது கல்வெட்டு உண்மையா?',
+      label_en: 'Is the name Thanjavur folk legend or verified fact?',
+      q_ta: 'தஞ்சாவூர் பெயர்தோற்றம் தலபுராண வாய்மொழி மரபா அல்லது நேரடி வரலாற்று உண்மையா?',
+      q_en: 'Is the etymological origin of Thanjavur oral sthala purana legend or documented historical fact?'
     },
+    {
+      label_ta: 'களம்பூர் என்ற ஊரின் வரலாற்று மூலம் என்ன?',
+      label_en: 'What is the historical origin of Kalambur?',
+      q_ta: 'களம்பூர் என்ற ஊரின் பெயர் மற்றும் வரலாற்றுச் சான்றுகள் என்ன?',
+      q_en: 'What are the historical inscriptions and origins for the town of Kalambur?'
+    }
   ];
 
-  const handleSend = async (questionToSend) => {
-    const q = (questionToSend || inputVal).trim();
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatHistory, loading]);
+
+  const handleSend = async (questionText = null) => {
+    const q = (questionText || inputVal).trim();
     if (!q || loading) return;
 
     // Add user message
-    const newChat = [...chatHistory, { role: 'user', text: q }];
-    setChatHistory(newChat);
+    const userMsg = {
+      id: Date.now(),
+      role: 'user',
+      text: q,
+    };
+    setChatHistory((prev) => [...prev, userMsg]);
     setInputVal('');
     setLoading(true);
 
     try {
-      const response = await askAI(q, lang);
-      setChatHistory([
-        ...newChat,
-        {
-          role: 'assistant',
-          text: response.answer,
-          sources: response.sources_used || [],
-          places: response.places_found || [],
-          aiGenerated: response.ai_generated,
-          fallback: response.fallback,
-        },
-      ]);
+      const res = await askAI(q, lang, districtHint || null);
+      const assistantMsg = {
+        id: Date.now() + 1,
+        role: 'assistant',
+        text: res.answer || (lang === 'ta' ? 'பதில் கிடைக்கவில்லை.' : 'No response generated.'),
+        sources: res.sources_used || [],
+        passages: res.passages_used || [],
+        evidence_status: res.evidence_status || 'verified',
+        evidence_classification: res.evidence_classification,
+        is_fallback: res.is_fallback,
+      };
+      setChatHistory((prev) => [...prev, assistantMsg]);
     } catch (err) {
-      console.error('Error asking AI:', err);
-      setChatHistory([
-        ...newChat,
-        {
-          role: 'assistant',
-          text:
-            lang === 'ta'
-              ? 'மன்னிக்கவும், வரலாற்றுத் தரவுகளைப் பெறுவதில் பிழை ஏற்பட்டது. தயவுசெய்து சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்.'
-              : 'Sorry, an error occurred while querying historical records. Please check if the backend server is running.',
-          sources: [],
-          places: [],
-          error: true,
-        },
-      ]);
+      console.error('Ask error:', err);
+      const errorMsg = {
+        id: Date.now() + 1,
+        role: 'assistant',
+        text:
+          lang === 'ta'
+            ? 'மன்னிக்கவும், வரலாற்றுத் தரவுதளத்தை அணுகுவதில் பிழை ஏற்பட்டது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.'
+            : 'Apologies, an error occurred while connecting to the historical database. Please retry.',
+        sources: [],
+        passages: [],
+        evidence_status: 'unverified',
+      };
+      setChatHistory((prev) => [...prev, errorMsg]);
     } finally {
       setLoading(false);
     }
   };
 
+  const getEvidenceBadge = (status) => {
+    switch (status) {
+      case 'verified':
+      case 'documented_fact':
+        return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-900 border border-emerald-300">
+            <CheckCircle2 className="w-3 h-3 text-emerald-700" />
+            {lang === 'ta' ? 'சான்றாதார உண்மை' : 'Documented Fact'}
+          </span>
+        );
+      case 'partially_verified':
+      case 'scholarly_hypothesis':
+        return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
+            <AlertTriangle className="w-3 h-3 text-amber-700" />
+            {lang === 'ta' ? 'அறிஞர் கருதுகோள்' : 'Scholarly Hypothesis'}
+          </span>
+        );
+      default:
+        return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-900 border border-rose-300">
+            <HelpCircle className="w-3 h-3 text-rose-700" />
+            {lang === 'ta' ? 'வாய்மொழி மரபு' : 'Folk Tradition'}
+          </span>
+        );
+    }
+  };
+
   return (
     <div className="space-y-6 max-w-4xl mx-auto py-2">
-      {/* Header */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-sm space-y-3">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-[#C5A66A] text-[#172B40] flex items-center justify-center font-bold">
-            <Bot className="w-5 h-5 text-[#172B40]" />
+      {/* Header Banner */}
+      <div className="bg-[#172B40] text-white rounded-2xl p-6 border border-[#2A3E54] shadow-sm relative overflow-hidden">
+        <div className="absolute right-0 top-0 w-72 h-72 bg-[#C5A66A]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10 space-y-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A66A]/20 border border-[#C5A66A]/40 text-[#C5A66A] text-xs font-semibold">
+            <Bot className="w-3.5 h-3.5" />
+            <span>{lang === 'ta' ? 'சான்றாதார AI வரலாற்று ஆய்வாளர்' : 'Source-Grounded History AI'}</span>
           </div>
-          <div>
-            <h2 className="text-2xl font-bold text-[#172B40]">
-              {t('ask.title', 'Ask History AI')}
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500">
-              {lang === 'ta'
-                ? 'அரசு ஆவணங்கள் மற்றும் சான்றுகளின் அடிப்படையில் கேட்கப்படும் கேள்விகளுக்குப் பதில்கள்.'
-                : 'Evidence-grounded historical Q&A with Gemini and primary database citations.'}
-            </p>
-          </div>
-        </div>
-
-        {/* Suggestion Chips */}
-        <div className="pt-2">
-          <span className="text-xs font-semibold text-gray-500 block mb-2">
-            {lang === 'ta' ? 'மாதிரி வினாக்கள்:' : 'Suggested Questions:'}
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {suggestions.map((item, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => handleSend(item.q)}
-                disabled={loading}
-                className="text-left px-3 py-1.5 rounded-lg bg-[#F7F4ED] hover:bg-[#C5A66A]/20 text-[#172B40] text-xs font-medium border border-gray-200 transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+          <h1 className="text-2xl font-extrabold text-white tracking-tight">
+            {lang === 'ta'
+              ? 'தமிழக ஊர்ப் பெயர்கள் குறித்து AI-யிடம் கேளுங்கள்'
+              : 'Ask History AI — Backed by Archival Citations'}
+          </h1>
+          <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+            {lang === 'ta'
+              ? 'கற்பனையான கூற்றுகளைத் தவிர்த்து, மாவட்ட அரசிதழ்கள் மற்றும் கல்வெட்டு வெளியீடுகளின் அடிப்படையில் சான்றுகளுடன் கூடிய பதில்களைப் பெறுங்கள்.'
+              : 'Grounded exclusively in Tamil Nadu Gazetteers, Epigraphia Indica, and official Government Orders.'}
+          </p>
         </div>
       </div>
 
-      {/* Chat Messages Container */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6 space-y-6 min-h-[380px]">
-        {chatHistory.map((msg, index) => (
-          <div
-            key={index}
-            className={`flex gap-3 sm:gap-4 ${
-              msg.role === 'user' ? 'justify-end' : 'justify-start'
-            }`}
-          >
-            {msg.role === 'assistant' && (
-              <div className="w-8 h-8 rounded-lg bg-[#172B40] text-white flex items-center justify-center shrink-0 mt-1 shadow-xs">
-                <Bot className="w-4 h-4 text-[#C5A66A]" />
-              </div>
-            )}
-
-            <div
-              className={`max-w-2xl rounded-2xl p-4 sm:p-5 text-sm leading-relaxed space-y-3 ${
-                msg.role === 'user'
-                  ? 'bg-[#172B40] text-white rounded-tr-none'
-                  : 'bg-[#F7F4ED] text-[#172B40] border border-gray-200 rounded-tl-none'
-              }`}
+      {/* Suggested Questions */}
+      <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm space-y-2">
+        <span className="text-xs font-bold text-gray-600 block">
+          {lang === 'ta' ? 'பரிந்துரைக்கப்பட்ட வரலாற்று வினாக்கள்:' : 'Suggested historical inquiries:'}
+        </span>
+        <div className="flex flex-wrap gap-2">
+          {suggestions.map((s, idx) => (
+            <button
+              key={idx}
+              onClick={() => handleSend(lang === 'ta' ? s.q_ta : s.q_en)}
+              className="px-3 py-1.5 rounded-lg bg-[#F7F4ED] hover:bg-[#eae5d8] text-[#172B40] text-xs font-medium border border-gray-200 transition-colors text-left"
             >
-              <div className="whitespace-pre-line font-normal text-xs sm:text-sm">
-                {msg.text}
+              {lang === 'ta' ? s.label_ta : s.label_en}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Chat Messages Stream */}
+      <div className="space-y-4 min-h-[380px]">
+        {chatHistory.map((msg) => {
+          const isUser = msg.role === 'user';
+          return (
+            <div
+              key={msg.id}
+              className={`flex items-start gap-3 ${isUser ? 'flex-row-reverse' : ''}`}
+            >
+              <div
+                className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
+                  isUser
+                    ? 'bg-[#172B40] text-white shadow-sm'
+                    : 'bg-[#C5A66A] text-[#172B40] shadow-sm font-bold'
+                }`}
+              >
+                {isUser ? <User className="w-5 h-5" /> : <Bot className="w-5 h-5" />}
               </div>
 
-              {/* Status pill for AI vs Database Grounding */}
-              {msg.role === 'assistant' && !msg.isInitial && (
-                <div className="pt-2 flex items-center gap-2 flex-wrap text-[11px] border-t border-gray-200/80">
-                  {msg.aiGenerated ? (
-                    <span className="inline-flex items-center gap-1 text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">
-                      <Sparkles className="w-3 h-3 text-emerald-600" />
-                      <span>{lang === 'ta' ? 'Gemini AI சான்றாய்வு பதில்' : 'Gemini AI Grounded Answer'}</span>
+              <div
+                className={`rounded-2xl p-4 sm:p-5 text-xs sm:text-sm leading-relaxed max-w-2xl shadow-sm ${
+                  isUser
+                    ? 'bg-[#172B40] text-white rounded-tr-none'
+                    : 'bg-white text-[#172B40] border border-gray-200 rounded-tl-none space-y-3'
+                }`}
+              >
+                {!isUser && (
+                  <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                    <span className="font-bold text-xs text-[#172B40]">
+                      {lang === 'ta' ? 'வரலாற்று ஆய்வாளர்' : 'Research Assistant'}
                     </span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1 text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-200 font-semibold">
-                      <Database className="w-3 h-3 text-blue-600" />
-                      <span>{lang === 'ta' ? 'நேரடி ஆவணத் தகவல் (Fallback)' : 'Database Archive Grounded Answer'}</span>
-                    </span>
-                  )}
-                </div>
-              )}
-
-              {/* Sources citations attached to answer */}
-              {msg.sources && msg.sources.length > 0 && (
-                <div className="pt-2 border-t border-gray-200 space-y-1.5">
-                  <div className="text-[11px] font-bold text-gray-700 flex items-center gap-1">
-                    <BookOpen className="w-3.5 h-3.5 text-[#C5A66A]" />
-                    <span>{t('ask.sourcesUsed', 'Verified Archival Citations:')}</span>
+                    {getEvidenceBadge(msg.evidence_status)}
                   </div>
-                  <div className="space-y-1">
-                    {msg.sources.map((src) => (
-                      <div
-                        key={src.id}
-                        className="bg-white p-2.5 rounded-lg border border-gray-200 text-xs flex items-center justify-between gap-2"
-                      >
+                )}
+
+                <div className="whitespace-pre-line font-medium leading-relaxed">
+                  {msg.text}
+                </div>
+
+                {/* Footnotes & Cited Sources */}
+                {!isUser && msg.sources && msg.sources.length > 0 && (
+                  <div className="pt-2 border-t border-gray-100 space-y-1.5 text-[11px] text-gray-600">
+                    <span className="font-bold text-gray-500 block">
+                      {lang === 'ta' ? 'மேற்கோள் காட்டப்பட்ட சான்றுகள்:' : 'Cited Archival Citations:'}
+                    </span>
+                    {msg.sources.map((src, sIdx) => (
+                      <div key={sIdx} className="flex items-start gap-1.5 bg-[#F7F4ED] p-2 rounded-lg border border-gray-100">
+                        <BookOpen className="w-3.5 h-3.5 text-[#C5A66A] shrink-0 mt-0.5" />
                         <div>
-                          <span className="font-semibold text-[#172B40]">
-                            {lang === 'ta' && src.title_tamil ? src.title_tamil : src.title}
-                          </span>
-                          {src.document_identifier && (
-                            <span className="ml-2 text-[10px] text-gray-500 font-mono">
-                              ({src.document_identifier})
-                            </span>
+                          <span className="font-bold text-[#172B40]">{src.title}</span>{' '}
+                          {src.publication_year && <span>({src.publication_year})</span>}
+                          {src.source_url && (
+                            <a
+                              href={src.source_url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-[#C5A66A] underline ml-1 font-semibold"
+                            >
+                              {lang === 'ta' ? 'ஆவணம் காண்க' : 'View Archive'}
+                            </a>
                           )}
                         </div>
-                        {src.source_url && (
-                          <a
-                            href={src.source_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800 inline-flex items-center gap-1 shrink-0 font-medium text-[11px]"
-                          >
-                            <span>{lang === 'ta' ? 'ஆதாரம்' : 'View Source'}</span>
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
-                        )}
                       </div>
                     ))}
                   </div>
-                </div>
-              )}
-            </div>
-
-            {msg.role === 'user' && (
-              <div className="w-8 h-8 rounded-lg bg-[#C5A66A] text-[#172B40] flex items-center justify-center shrink-0 mt-1 shadow-xs">
-                <User className="w-4 h-4 font-bold" />
+                )}
               </div>
-            )}
-          </div>
-        ))}
+            </div>
+          );
+        })}
 
         {loading && (
-          <div className="flex gap-3 items-center text-gray-500 text-xs pl-2">
-            <div className="w-7 h-7 rounded-lg bg-[#172B40] text-white flex items-center justify-center shrink-0">
-              <Bot className="w-4 h-4 text-[#C5A66A] animate-pulse" />
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#C5A66A] text-[#172B40] flex items-center justify-center shrink-0">
+              <Bot className="w-5 h-5" />
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-[#C5A66A] animate-bounce"></div>
-              <div className="w-2 h-2 rounded-full bg-[#C5A66A] animate-bounce [animation-delay:0.2s]"></div>
-              <div className="w-2 h-2 rounded-full bg-[#C5A66A] animate-bounce [animation-delay:0.4s]"></div>
-              <span className="ml-1 font-medium">
-                {lang === 'ta' ? 'வரலாற்று ஆவணங்களை ஆய்வு செய்கிறது...' : 'Analyzing historical evidence...'}
-              </span>
+            <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm flex items-center gap-2 text-xs font-semibold text-[#172B40]">
+              <div className="animate-spin w-4 h-4 border-2 border-[#172B40] border-t-transparent rounded-full" />
+              <span>{lang === 'ta' ? 'அரசிதழ் தரவுகளில் சான்றுகளைத் தேடுகிறது...' : 'Searching archival citations and epigraphy...'}</span>
             </div>
           </div>
         )}
+        <div ref={messagesEndRef} />
       </div>
 
-      {/* Input Field */}
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSend();
-        }}
-        className="flex items-center gap-2 bg-white rounded-xl p-2 border border-gray-300 shadow-sm focus-within:border-[#C5A66A] focus-within:ring-2 focus-within:ring-[#C5A66A]/20 transition-all"
-      >
-        <input
-          type="text"
-          value={inputVal}
-          onChange={(e) => setInputVal(e.target.value)}
-          placeholder={t('ask.placeholder', 'Ask a historical place question in Tamil or English...')}
-          disabled={loading}
-          className="w-full px-3 py-2 text-sm text-[#172B40] placeholder-gray-400 focus:outline-none bg-transparent"
-        />
-        <button
-          type="submit"
-          disabled={loading || !inputVal.trim()}
-          className="bg-[#172B40] hover:bg-[#20364F] disabled:opacity-50 text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-lg flex items-center gap-1.5 transition-colors shadow-sm shrink-0"
+      {/* Message Composer */}
+      <div className="bg-white rounded-2xl p-3 border border-gray-200 shadow-md">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSend();
+          }}
+          className="flex items-center gap-2"
         >
-          <span>{t('ask.send', 'Ask')}</span>
-          <Send className="w-3.5 h-3.5" />
-        </button>
-      </form>
+          <input
+            type="text"
+            value={inputVal}
+            onChange={(e) => setInputVal(e.target.value)}
+            placeholder={
+              lang === 'ta'
+                ? 'உங்கள் வரலாற்று வினாவை உள்ளிடுங்கள்... (எ.கா: மதுரை பெயர்க்காரணம் என்ன?)'
+                : 'Ask any historical place inquiry... (e.g. Origin of Madurai?)'
+            }
+            className="flex-1 px-4 py-2.5 bg-[#F7F4ED] rounded-xl text-xs sm:text-sm text-[#172B40] focus:outline-none focus:ring-1 focus:ring-[#C5A66A] border border-gray-200 font-medium"
+          />
+          <button
+            type="submit"
+            disabled={!inputVal.trim() || loading}
+            className="bg-[#172B40] hover:bg-[#20364F] disabled:opacity-50 text-white font-bold text-xs px-5 py-3 rounded-xl transition-colors flex items-center gap-1.5 shrink-0 shadow-sm"
+          >
+            <Send className="w-4 h-4 text-[#C5A66A]" />
+            <span className="hidden sm:inline">{lang === 'ta' ? 'அனுப்புக' : 'Send'}</span>
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
