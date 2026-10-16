@@ -272,14 +272,14 @@ export const RelationshipGraph = () => {
         </div>
 
         {/* Place Dropdown */}
-        <div className="relative z-10 flex items-center gap-2 bg-[#0F1D2C] p-2 rounded-xl border border-[#2C3F55]">
+        <div className="relative z-10 flex items-center justify-between sm:justify-start gap-2 bg-[#0F1D2C] p-2 rounded-xl border border-[#2C3F55] w-full sm:w-auto">
           <label className="text-xs font-semibold text-[#C5A66A] shrink-0 pl-1">
             {lang === 'ta' ? 'இடம் தேர்வு:' : 'Select place:'}
           </label>
           <select
             value={selectedPlaceId}
             onChange={handlePlaceChange}
-            className="px-3 py-1.5 bg-[#172B40] border border-[#2C3F55] rounded-lg text-xs font-bold text-white focus:outline-none focus:border-[#C5A66A]"
+            className="flex-1 sm:flex-initial px-3 py-1.5 bg-[#172B40] border border-[#2C3F55] rounded-lg text-xs font-bold text-white focus:outline-none focus:border-[#C5A66A]"
           >
             {placesList.map((p) => (
               <option key={p.id} value={p.id}>
@@ -291,7 +291,7 @@ export const RelationshipGraph = () => {
       </div>
 
       {/* Main Interactive Canvas Container */}
-      <div className="relative bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden h-[580px] flex">
+      <div className="relative bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden h-[460px] sm:h-[540px] lg:h-[600px] flex">
         {loading ? (
           <div className="m-auto text-center text-gray-500 text-sm">
             <div className="inline-block animate-spin w-7 h-7 border-2 border-[#172B40] border-t-transparent rounded-full mb-3"></div>
@@ -306,51 +306,52 @@ export const RelationshipGraph = () => {
               onEdgesChange={onEdgesChange}
               onNodeClick={onNodeClick}
               fitView
+              fitViewOptions={{ padding: 0.15 }}
               minZoom={0.2}
               maxZoom={1.5}
             >
               <Background color="#E2E8F0" gap={16} />
-              <Controls />
+              <Controls position="top-left" />
             </ReactFlow>
 
             {/* Legend on Bottom Left */}
-            <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur p-3 rounded-xl border border-gray-200 shadow-md text-xs space-y-1.5 z-10 pointer-events-auto">
-              <span className="font-bold text-gray-700 block text-[11px] uppercase tracking-wider mb-1">
+            <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur p-2.5 sm:p-3 rounded-xl border border-gray-200 shadow-md text-[11px] sm:text-xs space-y-1 sm:space-y-1.5 z-10 pointer-events-auto max-w-[220px] sm:max-w-none">
+              <span className="font-bold text-gray-700 block text-[10px] sm:text-[11px] uppercase tracking-wider mb-0.5">
                 {t('graph.legend', 'Graph Legend')}
               </span>
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-white border-2 border-[#172B40] inline-block"></span>
-                <span className="text-gray-600">{t('graph.place', 'Current Place')}</span>
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white border-2 border-[#172B40] inline-block"></span>
+                <span className="text-gray-600 truncate">{t('graph.place', 'Current Place')}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded bg-[#FFFBEB] border border-[#FDE68A] inline-block"></span>
-                <span className="text-gray-600">{t('graph.historicalName', 'Historical Name')}</span>
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded bg-[#FFFBEB] border border-[#FDE68A] inline-block"></span>
+                <span className="text-gray-600 truncate">{t('graph.historicalName', 'Historical Name')}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded bg-[#ECFDF5] border border-[#A7F3D0] inline-block"></span>
-                <span className="text-gray-600">{t('graph.eventNode', 'Event')}</span>
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded bg-[#ECFDF5] border border-[#A7F3D0] inline-block"></span>
+                <span className="text-gray-600 truncate">{t('graph.eventNode', 'Event')}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded bg-[#EFF6FF] border border-[#BFDBFE] inline-block"></span>
-                <span className="text-gray-600">{t('graph.sourceNode', 'Source Document')}</span>
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded bg-[#EFF6FF] border border-[#BFDBFE] inline-block"></span>
+                <span className="text-gray-600 truncate">{t('graph.sourceNode', 'Source Document')}</span>
               </div>
             </div>
 
             {/* Side Panel for Node Inspection */}
             {selectedNode && (
-              <div className="absolute top-4 right-4 w-80 bg-white/98 backdrop-blur p-5 rounded-2xl border border-gray-200 shadow-xl z-20 space-y-3 max-h-[530px] overflow-y-auto animate-in fade-in duration-200">
+              <div className="absolute top-3 right-3 left-3 sm:left-auto sm:w-80 max-w-full bg-white/98 backdrop-blur p-4 sm:p-5 rounded-2xl border border-gray-200 shadow-xl z-20 space-y-3 max-h-[65%] sm:max-h-[530px] overflow-y-auto animate-in fade-in duration-200">
                 <div className="flex items-start justify-between gap-2 border-b border-gray-100 pb-2">
-                  <div className="space-y-0.5">
-                    <span className="text-[10px] uppercase font-bold text-[#C5A66A] tracking-wider">
+                  <div className="space-y-0.5 min-w-0">
+                    <span className="text-[10px] uppercase font-bold text-[#C5A66A] tracking-wider block">
                       {selectedNode.type}
                     </span>
-                    <h4 className="font-bold text-base text-[#172B40]">
+                    <h4 className="font-bold text-sm sm:text-base text-[#172B40] truncate">
                       {selectedNode.label}
                     </h4>
                   </div>
                   <button
                     onClick={() => setSelectedNode(null)}
-                    className="p-1 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+                    className="p-1 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 shrink-0"
                   >
                     <X className="w-4 h-4" />
                   </button>

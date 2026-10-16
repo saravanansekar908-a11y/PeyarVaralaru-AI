@@ -304,3 +304,66 @@ class HealthResponse(BaseModel):
     gemini_available: bool
     version: str
 
+
+# --- Historical Maps & Comparison Observations ---
+class MapObservationOut(BaseModel):
+    id: Optional[int] = None
+    map_id: int
+    place_name: str
+    category: str
+    title: str
+    title_tamil: Optional[str] = None
+    observation_text: str
+    observation_text_tamil: Optional[str] = None
+    evidence_type: str = "verified_archival_finding"
+    historical_year_ref: Optional[str] = None
+    modern_comparison: Optional[str] = None
+    modern_comparison_tamil: Optional[str] = None
+    source_citation: Optional[str] = None
+    source_url: Optional[str] = None
+    coordinates_json: Optional[str] = None
+    verification_status: str = "verified"
+
+    class Config:
+        from_attributes = True
+
+
+class HistoricalMapOut(BaseModel):
+    id: int
+    title: str
+    title_tamil: Optional[str] = None
+    place_name: str
+    place_name_tamil: Optional[str] = None
+    district: str
+    district_tamil: Optional[str] = None
+    historical_period: Optional[str] = None
+    year_start: Optional[int] = None
+    year_end: Optional[int] = None
+    creator: Optional[str] = None
+    creator_tamil: Optional[str] = None
+    source_name: Optional[str] = None
+    source_url: Optional[str] = None
+    image_url: str
+    map_service_url: Optional[str] = None
+    license_info: Optional[str] = None
+    georeferencing_status: str = "georeferenced"
+    bounds_json: Optional[str] = None
+    center_lat: float = 13.0827
+    center_lng: float = 80.2707
+    default_zoom: int = 13
+    scale: Optional[str] = None
+    description: Optional[str] = None
+    description_tamil: Optional[str] = None
+    limitations: Optional[str] = None
+    limitations_tamil: Optional[str] = None
+    verification_status: str = "verified"
+    observations_count: Optional[int] = 0
+
+    class Config:
+        from_attributes = True
+
+
+class HistoricalMapDetailOut(HistoricalMapOut):
+    observations: List[MapObservationOut] = []
+
+

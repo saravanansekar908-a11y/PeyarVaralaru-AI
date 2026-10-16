@@ -31,10 +31,10 @@ const DistrictViewToolbar = ({
   return (
     <div className="flex flex-col gap-3">
       {/* Top row: view toggle + sort */}
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
         {/* View mode toggle */}
         <div
-          className="inline-flex items-center bg-white border border-gray-200 rounded-xl p-1 gap-1 shadow-sm"
+          className="inline-flex items-center bg-white border border-gray-200 rounded-xl p-1 gap-1 shadow-sm shrink-0"
           role="group"
           aria-label={lang === 'ta' ? 'காட்சி முறை' : 'View mode'}
         >
@@ -67,16 +67,16 @@ const DistrictViewToolbar = ({
         </div>
 
         {/* Sort selector */}
-        <div className="flex items-center gap-2">
-          <SlidersHorizontal className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-          <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+          <SlidersHorizontal className="w-3.5 h-3.5 text-gray-400 shrink-0 hidden xs:inline-block" />
+          <div className="flex items-center gap-1 flex-wrap">
             {sortOptions.map((opt) => (
               <button
                 key={opt.id}
                 type="button"
                 onClick={() => onSortChange(opt.id)}
                 aria-pressed={sortBy === opt.id}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-[#C5A66A] ${
+                className={`px-2 sm:px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-[#C5A66A] ${
                   sortBy === opt.id
                     ? 'bg-[#172B40] text-[#C5A66A]'
                     : 'bg-white text-gray-600 border border-gray-200 hover:border-[#C5A66A] hover:text-[#172B40]'

@@ -19,7 +19,8 @@ import {
   Compass,
   Scroll,
   Layers,
-  ChevronRight
+  ChevronRight,
+  Map
 } from 'lucide-react';
 
 export const Home = () => {
@@ -72,6 +73,14 @@ export const Home = () => {
       title_en: 'Historical Timeline',
       desc_ta: 'சங்க காலம், பல்லவர், சோழர், விஜயநகரர் மற்றும் காலனித்துவ ஆட்சிகளில் ஊர்ப் பெயர்களின் மாற்றங்களை காலவரிசையில் காண்க.',
       desc_en: 'Trace chronological transformations of settlements across Sangam, Chola, Nayak, and colonial periods.'
+    },
+    {
+      to: '/maps',
+      icon: Map,
+      title_ta: 'வரலாற்று வரைபட ஒப்பீடு',
+      title_en: 'Historical Map Comparison',
+      desc_ta: '1710 முதல் 1890 வரையிலான உண்மையான காப்பக வரைபடங்களை நவீன செயற்கைக்கோள் வரைபடங்களுடன் ஒப்பிட்டு ஆராயுங்கள்.',
+      desc_en: 'Interactive Side-by-Side, Swipe, and Transparency comparison between 18th/19th century archival cartography and modern OpenStreetMap.'
     },
     {
       to: '/ask',
@@ -239,9 +248,9 @@ export const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1D2C]/95 via-[#172B40]/85 to-[#0F1D2C]/80" />
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#C5A66A]/15 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 p-6 sm:p-10 lg:p-12 max-w-3xl space-y-6">
+        <div className="relative z-10 p-4 sm:p-8 lg:p-12 max-w-3xl space-y-5 sm:space-y-6">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C5A66A]/20 border border-[#C5A66A]/40 text-[#C5A66A] text-xs font-semibold backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#C5A66A]/20 border border-[#C5A66A]/40 text-[#C5A66A] text-[11px] sm:text-xs font-semibold backdrop-blur-sm">
             <Sparkles className="w-3.5 h-3.5" />
             <span>
               {lang === 'ta'
@@ -252,7 +261,7 @@ export const Home = () => {
 
           {/* Headline */}
           <div className="space-y-2">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
               {lang === 'ta' ? (
                 <>
                   தமிழ்நாட்டின் <span className="text-[#C5A66A]">வரலாற்று இடப்பெயர்கள்</span>
@@ -263,7 +272,7 @@ export const Home = () => {
                 </>
               )}
             </h1>
-            <p className="text-sm sm:text-base text-gray-200/90 leading-relaxed max-w-2xl font-normal">
+            <p className="text-xs sm:text-sm md:text-base text-gray-200/90 leading-relaxed max-w-2xl font-normal">
               {lang === 'ta'
                 ? 'பழைய மாவட்ட அரசிதழ்கள், கல்வெட்டுகள், செப்பேடுகள் மற்றும் அரசு ஆவணங்கள் மூலம் தமிழக ஊர்ப் பெயர்களின் பரிணாமத்தை சான்றுகளுடன் ஆராயுங்கள்.'
                 : 'Discover historical renamings, linguistic derivations, and inscriptional evidence recorded across centuries of Tamil epigraphy and colonial archives.'}
@@ -271,25 +280,25 @@ export const Home = () => {
           </div>
 
           {/* Prominent Search Bar */}
-          <form onSubmit={handleSearchSubmit} className="pt-2">
-            <div className="flex flex-col sm:flex-row items-center bg-white rounded-2xl p-2 shadow-2xl border-2 border-[#C5A66A]/50 focus-within:border-[#C5A66A] transition-all gap-2">
+          <form onSubmit={handleSearchSubmit} className="pt-1 sm:pt-2">
+            <div className="flex flex-col sm:flex-row items-center bg-white rounded-2xl p-1.5 sm:p-2 shadow-2xl border-2 border-[#C5A66A]/50 focus-within:border-[#C5A66A] transition-all gap-2">
               <div className="flex items-center w-full px-2">
-                <Search className="w-5 h-5 text-[#C5A66A] mr-3 shrink-0" />
+                <Search className="w-5 h-5 text-[#C5A66A] mr-2.5 sm:mr-3 shrink-0" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={
                     lang === 'ta'
-                      ? 'ஊர்ப் பெயரைத் தேடுங்கள்... (எ.கா: திருவண்ணாமலை, ஆரணி, தஞ்சாவூர், சென்னை, மதுரை)'
-                      : 'Search any Tamil Nadu place... (e.g. Tiruvannamalai, Arani, Thanjavur, Chennai)'
+                      ? 'ஊர்ப் பெயரைத் தேடுங்கள்... (எ.கா: திருவண்ணாமலை, தஞ்சாவூர்)'
+                      : 'Search any Tamil Nadu place... (e.g. Tiruvannamalai, Thanjavur)'
                   }
-                  className="w-full py-2.5 text-sm sm:text-base text-[#172B40] placeholder-gray-400 focus:outline-none font-medium"
+                  className="w-full py-2 sm:py-2.5 text-xs sm:text-sm md:text-base text-[#172B40] placeholder-gray-400 focus:outline-none font-medium"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full sm:w-auto bg-[#C5A66A] hover:bg-[#b8985c] text-[#172B40] font-extrabold text-sm px-7 py-3 rounded-xl transition-all shadow-md shrink-0 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-[#C5A66A] hover:bg-[#b8985c] text-[#172B40] font-extrabold text-xs sm:text-sm px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl transition-all shadow-md shrink-0 flex items-center justify-center gap-2"
               >
                 <span>{lang === 'ta' ? 'தேடுக' : 'Explore'}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -298,15 +307,15 @@ export const Home = () => {
           </form>
 
           {/* Suggested Searches */}
-          <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-gray-300">
-            <span className="font-semibold text-[#C5A66A]">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1 text-xs text-gray-300">
+            <span className="font-semibold text-[#C5A66A] text-[11px] sm:text-xs">
               {lang === 'ta' ? 'பரிந்துரைக்கப்பட்டவை:' : 'Suggested searches:'}
             </span>
             {suggestedSearches.map((item, index) => (
               <button
                 key={index}
                 onClick={() => navigate(`/search?q=${encodeURIComponent(item.q)}`)}
-                className="px-3 py-1 rounded-full bg-white/10 hover:bg-[#C5A66A] hover:text-[#172B40] text-gray-200 border border-white/20 transition-all font-medium text-xs backdrop-blur-sm"
+                className="px-2.5 sm:px-3 py-1 rounded-full bg-white/10 hover:bg-[#C5A66A] hover:text-[#172B40] text-gray-200 border border-white/20 transition-all font-medium text-[11px] sm:text-xs backdrop-blur-sm"
               >
                 {lang === 'ta' ? item.label_ta : item.label_en}
               </button>
@@ -330,7 +339,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {featureCards.map((card, idx) => {
             const Icon = card.icon;
             return (
@@ -465,13 +474,13 @@ export const Home = () => {
       </section>
 
       {/* 4. Methodology & Evidence Grounding Banner */}
-      <section className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+      <section className="bg-white rounded-3xl p-5 sm:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6">
         <div className="space-y-2 max-w-xl">
           <div className="flex items-center gap-2 text-xs font-bold text-[#C5A66A] uppercase tracking-wider">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>{lang === 'ta' ? 'ஆவணச் சான்று உத்தரவாதம்' : 'Epigraphical & Archival Rigor'}</span>
           </div>
-          <h3 className="text-lg sm:text-xl font-bold text-[#172B40]">
+          <h3 className="text-lg sm:text-xl font-bold text-[#172B40] leading-snug">
             {lang === 'ta'
               ? 'வரலாற்றுக் கற்பனைகள் இன்றி, உண்மை ஆவணங்கள் மட்டுமே'
               : 'Zero Historical Hallucination — Grounded in Documented Citations'}
@@ -482,17 +491,17 @@ export const Home = () => {
               : 'Our retrieval pipeline cross-references District Gazetteers, Inscriptions of South India (ASI), and Tamil Nadu Government Orders before synthesizing explanations.'}
           </p>
         </div>
-        <div className="flex flex-wrap gap-3 shrink-0">
+        <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 w-full sm:w-auto shrink-0">
           <Link
             to="/sources"
-            className="px-5 py-2.5 rounded-xl bg-[#F7F4ED] text-[#172B40] hover:bg-[#eae4d5] text-xs font-bold border border-gray-300 transition-colors flex items-center gap-2"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#F7F4ED] text-[#172B40] hover:bg-[#eae4d5] text-xs font-bold border border-gray-300 transition-colors flex items-center justify-center gap-2"
           >
             <BookOpen className="w-4 h-4 text-[#C5A66A]" />
             <span>{lang === 'ta' ? 'அரசிதழ் மூலங்கள்' : 'View Source Archives'}</span>
           </Link>
           <Link
             to="/ask"
-            className="px-5 py-2.5 rounded-xl bg-[#172B40] text-white hover:bg-[#20364F] text-xs font-bold transition-colors flex items-center gap-2 shadow-sm"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#172B40] text-white hover:bg-[#20364F] text-xs font-bold transition-colors flex items-center justify-center gap-2 shadow-sm"
           >
             <Bot className="w-4 h-4 text-[#C5A66A]" />
             <span>{lang === 'ta' ? 'AI-யிடம் கேட்க' : 'Ask History AI'}</span>

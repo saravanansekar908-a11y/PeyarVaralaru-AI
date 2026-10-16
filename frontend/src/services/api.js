@@ -94,4 +94,41 @@ export const ingestDocument = async (payload) => {
   return res.data;
 };
 
+// --- Historical Maps & Comparison Observations ---
+export const getHistoricalMaps = async (params = {}) => {
+  const res = await apiClient.get('/maps', { params });
+  return res.data;
+};
+
+export const getHistoricalMap = async (id) => {
+  const res = await apiClient.get(`/maps/${id}`);
+  return res.data;
+};
+
+export const getMapPeriods = async () => {
+  const res = await apiClient.get('/maps/periods');
+  return res.data;
+};
+
+export const getMapPlaces = async () => {
+  const res = await apiClient.get('/maps/places');
+  return res.data;
+};
+
+export const getMapObservationCategories = async () => {
+  const res = await apiClient.get('/maps/observations/categories');
+  return res.data;
+};
+
+export const searchMapObservations = async (params = {}) => {
+  const res = await apiClient.get('/maps/observations/search', { params });
+  return res.data;
+};
+
+export const getMapObservations = async (mapId, category = null) => {
+  const params = category ? { category } : {};
+  const res = await apiClient.get(`/maps/${mapId}/observations`, { params });
+  return res.data;
+};
+
 export default apiClient;

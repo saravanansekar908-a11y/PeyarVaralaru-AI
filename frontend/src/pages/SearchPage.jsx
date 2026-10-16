@@ -218,7 +218,7 @@ export const SearchPage = () => {
 
           <form onSubmit={handleSubmit} className="space-y-3">
             <div className="flex flex-col sm:flex-row gap-2">
-              <div className="relative flex-1">
+              <div className="relative flex-1 min-w-0">
                 <Search className="w-5 h-5 text-gray-400 absolute left-3.5 top-3.5" />
                 <input
                   type="text"
@@ -226,10 +226,10 @@ export const SearchPage = () => {
                   onChange={(e) => setInputVal(e.target.value)}
                   placeholder={
                     lang === 'ta'
-                      ? 'தமிழ் அல்லது ஆங்கிலத்தில் ஊர்ப் பெயரைத் தேடுங்கள்... (எ.கா: அரியலூர், மதுரை)'
-                      : 'Search place name in Tamil or English... (e.g. Ariyalur, Madurai)'
+                      ? 'தமிழ் அல்லது ஆங்கிலத்தில் ஊர்ப் பெயரைத் தேடுங்கள்...'
+                      : 'Search place name in Tamil or English... (e.g. Madurai)'
                   }
-                  className="w-full pl-11 pr-10 py-3 bg-white text-[#172B40] rounded-xl text-sm font-medium placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C5A66A] shadow-sm"
+                  className="w-full pl-11 pr-10 py-3 bg-white text-[#172B40] rounded-xl text-xs sm:text-sm font-medium placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C5A66A] shadow-sm"
                 />
                 {inputVal && (
                   <button
@@ -247,7 +247,7 @@ export const SearchPage = () => {
               <select
                 value={districtFilter}
                 onChange={(e) => setDistrictFilter(e.target.value)}
-                className="py-3 px-3 bg-white text-[#172B40] rounded-xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#C5A66A] shadow-sm border-r-8 border-transparent"
+                className="w-full sm:w-48 lg:w-56 py-3 px-3 bg-white text-[#172B40] rounded-xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#C5A66A] shadow-sm shrink-0 border-r-8 border-transparent"
               >
                 {popularDistricts.map((d) => (
                   <option key={d.id} value={d.id}>
@@ -258,7 +258,7 @@ export const SearchPage = () => {
 
               <button
                 type="submit"
-                className="bg-[#C5A66A] hover:bg-[#b8985c] text-[#172B40] font-extrabold text-sm px-6 py-3 rounded-xl transition-colors shadow-sm shrink-0 flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto bg-[#C5A66A] hover:bg-[#b8985c] text-[#172B40] font-extrabold text-xs sm:text-sm px-6 py-3 rounded-xl transition-colors shadow-sm shrink-0 flex items-center justify-center gap-1.5"
               >
                 <Search className="w-4 h-4" />
                 <span>{lang === 'ta' ? 'தேடுக' : 'Search'}</span>

@@ -9,7 +9,13 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship, declarative_base, sessionmaker
 import os
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./peyarvaralaru.db")
+_DEFAULT_DB_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "peyarvaralaru.db")
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    if os.path.exists(_DEFAULT_DB_FILE):
+        DATABASE_URL = f"sqlite:///{_DEFAULT_DB_FILE.replace(chr(92), '/')}"
+    else:
+        DATABASE_URL = "sqlite:///./peyarvaralaru.db"
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -159,6 +165,72 @@ class DocumentPassage(Base):
     evidence_level = Column(String(50), default="documented_fact")  # documented_fact | scholarly_hypothesis | traditional_explanation | unknown_origin
 
     document = relationship("Document", back_populates="passages")
+
+
+class HistoricalMap(Base):
+    """
+    Historical cartographic map record of Tamil Nadu settlements, districts, and regions.
+    Grounds visual comparison in real archival maps from Survey of India, National Archives,
+    Tamil Nadu Archives, or British Library.
+    """
+    __tablename__ = "historical_maps"
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String(500), nullable=False, index=True)
+    title_tamil = Column(String(500), nullable=True)
+    place_name = Column(String(255), nullable=False, index=True)
+    place_name_tamil = Column(String(255), nullable=True)
+    district = Column(String(255), nullable=False, index=True)
+    district_tamil = Column(String(255), nullable=True)
+    historical_period = Column(String(100), nullable=True)  # Early Colonial (1750-1850) | Survey of India (1850-1947) | etc.
+    year_start = Column(Integer, nullable=True)
+    year_end = Column(Integer, nullable=True)
+    creator = Column(String(300), nullable=True)
+    creator_tamil = Column(String(300), nullable=True)
+    source_name = Column(String(300), nullable=True)
+    source_url = Column(String(1000), nullable=True)
+    image_url = Column(String(1000), nullable=False)
+    map_service_url = Column(String(1000), nullable=True)
+    license_info = Column(String(255), nullable=True)
+    georeferencing_status = Column(String(50), default="georeferenced")  # georeferenced | approximate | unreferenced
+    bounds_json = Column(Text, nullable=True)  # "[[south, west], [north, east]]"
+    center_lat = Column(Float, nullable=False, default=13.0827)
+    center_lng = Column(Float, nullable=False, default=80.2707)
+    default_zoom = Column(Integer, nullable=False, default=13)
+    scale = Column(String(100), nullable=True)
+    description = Column(Text, nullable=True)
+    description_tamil = Column(Text, nullable=True)
+    limitations = Column(Text, nullable=True)
+    limitations_tamil = Column(Text, nullable=True)
+    verification_status = Column(String(50), default="verified")  # verified | partially_verified | unverified
+
+    observations = relationship("MapObservation", back_populates="historical_map", cascade="all, delete-orphan")
+
+
+class MapObservation(Base):
+    """
+    Evidence-grounded comparison finding between a historical map and modern geography.
+    Categorized into: place_names, road_network, settlement_expansion, waterbodies,
+    administrative_boundaries, historical_landmarks.
+    """
+    __tablename__ = "map_observations"
+    id = Column(Integer, primary_key=True, index=True)
+    map_id = Column(Integer, ForeignKey("historical_maps.id"), nullable=False, index=True)
+    place_name = Column(String(255), nullable=False, index=True)
+    category = Column(String(100), nullable=False, index=True)  # place_names | road_network | settlement_expansion | waterbodies | administrative_boundaries | historical_landmarks
+    title = Column(String(300), nullable=False)
+    title_tamil = Column(String(300), nullable=True)
+    observation_text = Column(Text, nullable=False)
+    observation_text_tamil = Column(Text, nullable=True)
+    evidence_type = Column(String(100), default="verified_archival_finding")  # verified_archival_finding | cartographic_observation | scholarly_hypothesis | insufficient_evidence
+    historical_year_ref = Column(String(100), nullable=True)
+    modern_comparison = Column(Text, nullable=True)
+    modern_comparison_tamil = Column(Text, nullable=True)
+    source_citation = Column(String(500), nullable=True)
+    source_url = Column(String(1000), nullable=True)
+    coordinates_json = Column(String(100), nullable=True)  # "[lat, lng]"
+    verification_status = Column(String(50), default="verified")  # verified | partially_verified | unverified
+
+    historical_map = relationship("HistoricalMap", back_populates="observations")
 
 
 def get_db():

@@ -329,50 +329,50 @@ export const DistrictDashboard = () => {
           </div>
 
           {/* Quick-Glance Metadata Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            <div className="p-3.5 bg-white rounded-xl border border-gray-200 shadow-xs flex items-center gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3">
+            <div className="p-3 sm:p-3.5 bg-white rounded-xl border border-gray-200 shadow-xs flex items-center gap-2.5 sm:gap-3 min-w-0">
               <div className="w-8 h-8 rounded-lg bg-[#F7F4ED] text-[#C5A66A] flex items-center justify-center shrink-0">
                 <MapPin className="w-4 h-4" />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <span className="text-[10px] text-gray-500 uppercase font-bold block">{t('district.district', 'District')}</span>
-                <span className="text-xs font-extrabold text-[#172B40]">
+                <span className="text-xs font-extrabold text-[#172B40] truncate block">
                   {lang === 'ta' ? selectedDistrict.district_tamil : selectedDistrict.district_english}
                 </span>
               </div>
             </div>
 
-            <div className="p-3.5 bg-white rounded-xl border border-gray-200 shadow-xs flex items-center gap-3">
+            <div className="p-3 sm:p-3.5 bg-white rounded-xl border border-gray-200 shadow-xs flex items-center gap-2.5 sm:gap-3 min-w-0">
               <div className="w-8 h-8 rounded-lg bg-[#F7F4ED] text-[#C5A66A] flex items-center justify-center shrink-0">
                 <History className="w-4 h-4" />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <span className="text-[10px] text-gray-500 uppercase font-bold block">{t('district.historicalName', 'Historical Name')}</span>
-                <span className="text-xs font-bold text-[#172B40] truncate max-w-[130px] block">
+                <span className="text-xs font-bold text-[#172B40] truncate block">
                   {lang === 'ta' ? (selectedDistrict.ancient_or_historical_name_context_ta || selectedDistrict.district_tamil) : (selectedDistrict.ancient_or_historical_name_context_en || selectedDistrict.district_english)}
                 </span>
               </div>
             </div>
 
-            <div className="p-3.5 bg-white rounded-xl border border-gray-200 shadow-xs flex items-center gap-3">
+            <div className="p-3 sm:p-3.5 bg-white rounded-xl border border-gray-200 shadow-xs flex items-center gap-2.5 sm:gap-3 min-w-0">
               <div className="w-8 h-8 rounded-lg bg-[#F7F4ED] text-[#C5A66A] flex items-center justify-center shrink-0">
                 <Building2 className="w-4 h-4" />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <span className="text-[10px] text-gray-500 uppercase font-bold block">{t('district.administrativeHistory', 'Administrative History')}</span>
-                <span className="text-xs font-bold text-[#172B40] truncate max-w-[130px] block">
+                <span className="text-xs font-bold text-[#172B40] truncate block">
                   {lang === 'ta' ? (selectedDistrict.former_administrative_name_history_ta || 'பதிவு செய்யப்பட்டுள்ளது') : (selectedDistrict.former_administrative_name_history_en || 'Documented')}
                 </span>
               </div>
             </div>
 
-            <div className="p-3.5 bg-white rounded-xl border border-gray-200 shadow-xs flex items-center gap-3">
+            <div className="p-3 sm:p-3.5 bg-white rounded-xl border border-gray-200 shadow-xs flex items-center gap-2.5 sm:gap-3 min-w-0 col-span-2 sm:col-span-1">
               <div className="w-8 h-8 rounded-lg bg-[#F7F4ED] text-[#C5A66A] flex items-center justify-center shrink-0">
                 <Award className="w-4 h-4" />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <span className="text-[10px] text-gray-500 uppercase font-bold block">{t('district.specialFeatures', 'Special Features')}</span>
-                <span className="text-xs font-bold text-emerald-800">
+                <span className="text-xs font-bold text-emerald-800 truncate block">
                   {selectedDistrict.specialities ? `${selectedDistrict.specialities.length} ${lang === 'ta' ? 'சிறப்புகள்' : 'Highlights'}` : '-'}
                 </span>
               </div>

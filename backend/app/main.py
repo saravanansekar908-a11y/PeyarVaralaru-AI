@@ -14,13 +14,14 @@ from contextlib import asynccontextmanager
 from app.database import init_db, SessionLocal
 from app.services.seed_service import seed_database
 from app.services.seed_documents import seed_research_documents
+from app.services.seed_maps import seed_historical_maps
 from app.services.ai_service import is_gemini_available
-from app.routes import places, graph, ask, documents, districts
+from app.routes import places, graph, ask, documents, districts, maps
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Initialize database, seed places and research documents on startup."""
+    """Initialize database, seed places, research documents, and historical maps on startup."""
     init_db()
     db = SessionLocal()
     try:
@@ -32,6 +33,9 @@ async def lifespan(app: FastAPI):
         
         # Seed official research documents and passages
         seed_research_documents(db)
+
+        # Seed historical archival maps and comparison observations
+        seed_historical_maps(db)
     except Exception as e:
         print(f"[ERROR] Seed error: {e}")
     finally:
@@ -79,6 +83,7 @@ app.include_router(graph.router)
 app.include_router(ask.router)
 app.include_router(documents.router)
 app.include_router(districts.router)
+app.include_router(maps.router)
 
 
 @app.get("/api/health")

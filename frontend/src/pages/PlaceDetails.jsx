@@ -24,7 +24,8 @@ import {
   Navigation,
   Globe2,
   Compass,
-  ArrowRight
+  ArrowRight,
+  Map
 } from 'lucide-react';
 
 export const PlaceDetails = () => {
@@ -257,6 +258,13 @@ export const PlaceDetails = () => {
                 <span>{lang === 'ta' ? 'பழைய கிராமம்:' : 'Old Settlement:'} {lang === 'ta' ? (place.village_tamil || place.village) : place.village}</span>
               </div>
             )}
+            <Link
+              to={`/maps?place=${encodeURIComponent(place.current_name || '')}&district=${encodeURIComponent(place.district || '')}`}
+              className="inline-flex items-center gap-1.5 bg-[#C5A66A] text-[#172B40] hover:bg-[#d6ba80] px-3 py-1 rounded-md font-bold text-xs shadow-sm transition-all ml-auto"
+            >
+              <Map className="w-3.5 h-3.5" />
+              <span>{lang === 'ta' ? 'வரலாற்று வரைபடத்தில் பார்க்க' : 'View on Historical Map'}</span>
+            </Link>
           </div>
         </div>
       </div>
