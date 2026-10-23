@@ -9,8 +9,7 @@ npm run build
 cd ..
 
 echo "==> Step 2: Installing Backend Dependencies"
-cd backend
 pip install -r requirements.txt
-cd ..
+pip install -e .
 
 echo "==> Build completed successfully!"

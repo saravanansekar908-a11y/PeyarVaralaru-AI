@@ -4,6 +4,9 @@ set -o errexit
 
 echo "==> Step 1: Installing Backend Dependencies"
 pip install -r requirements.txt
+if [ -f "../setup.py" ]; then
+  pip install -e ..
+fi
 
 # If frontend exists in parent directory, build frontend assets
 if [ -d "../frontend" ]; then
