@@ -31,7 +31,7 @@ services:
     region: oregon
     plan: free
     rootDir: frontend
-    buildCommand: npm install --no-package-lock && npm run build
+    buildCommand: npm install --legacy-peer-deps && npm run build
     staticPublishPath: ./dist
     routes:
       - type: rewrite
@@ -39,6 +39,6 @@ services:
         destination: /index.html
     envVars:
       - key: NODE_VERSION
-        value: 20.18.0
+        value: 22.14.0
       - key: VITE_API_URL
         value: https://peyarvaralaru-ai-2.onrender.com

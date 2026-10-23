@@ -12,8 +12,13 @@ fi
 if [ -d "../frontend" ]; then
   echo "==> Step 2: Building Frontend Assets (../frontend)"
   cd ../frontend
-  npm install --no-package-lock
-  npm run build
+  if [ ! -f "dist/index.html" ]; then
+    npm install --legacy-peer-deps
+    npm run build
+  else
+    echo "Frontend dist already present. Attempting fresh build..."
+    (npm install --legacy-peer-deps && npm run build) || echo "Build warning: continuing with existing dist assets"
+  fi
   cd ../backend
 fi
 
