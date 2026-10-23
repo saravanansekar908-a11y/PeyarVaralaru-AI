@@ -118,6 +118,7 @@ if frontend_dist:
         return FileResponse(frontend_dist / "index.html")
 
 
+@app.get("/health")
 @app.get("/api/health")
 def health_check():
     """Health check endpoint."""

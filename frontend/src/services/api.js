@@ -1,6 +1,20 @@
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_URL || '/api';
+// Normalize API URL: Ensure protocol, strip trailing slashes, and ensure /api endpoint path
+let rawApiUrl = (import.meta.env.VITE_API_URL || '').trim();
+if (!rawApiUrl) {
+  rawApiUrl = '/api';
+} else {
+  if (!rawApiUrl.startsWith('http://') && !rawApiUrl.startsWith('https://') && !rawApiUrl.startsWith('/')) {
+    rawApiUrl = `https://${rawApiUrl}`;
+  }
+  rawApiUrl = rawApiUrl.replace(/\/+$/, '');
+  if (!rawApiUrl.endsWith('/api')) {
+    rawApiUrl = `${rawApiUrl}/api`;
+  }
+}
+
+export const API_BASE = rawApiUrl;
 
 const apiClient = axios.create({
   baseURL: API_BASE,

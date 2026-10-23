@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Search, X, Loader2, History, MapPin, Landmark } from 'lucide-react';
 import { useTranslation } from '../../services/LanguageContext';
 
-const API_BASE = import.meta.env.VITE_API_URL || '/api';
+import { API_BASE } from '../../services/api';
 
 /**
  * DistrictSearchBar
