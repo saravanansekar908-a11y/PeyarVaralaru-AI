@@ -3,7 +3,7 @@ import axios from 'axios';
 // Normalize API URL: Ensure protocol, strip trailing slashes, and ensure /api endpoint path
 let rawApiUrl = (import.meta.env.VITE_API_URL || '').trim();
 if (!rawApiUrl) {
-  rawApiUrl = '/api';
+  rawApiUrl = import.meta.env.PROD ? 'https://peyarvaralaru-ai-2.onrender.com/api' : '/api';
 } else {
   if (!rawApiUrl.startsWith('http://') && !rawApiUrl.startsWith('https://') && !rawApiUrl.startsWith('/')) {
     rawApiUrl = `https://${rawApiUrl}`;
