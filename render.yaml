@@ -13,7 +13,7 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.9
+        value: 3.11.10
       - key: GEMINI_API_KEY
         sync: false
       - key: FRONTEND_ORIGIN
