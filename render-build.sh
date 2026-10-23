@@ -4,7 +4,7 @@ set -o errexit
 
 echo "==> Step 1: Building Frontend Assets"
 cd frontend
-npm install
+npm install --no-package-lock
 npm run build
 cd ..
 

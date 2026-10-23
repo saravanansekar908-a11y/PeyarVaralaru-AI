@@ -12,7 +12,7 @@ fi
 if [ -d "../frontend" ]; then
   echo "==> Step 2: Building Frontend Assets (../frontend)"
   cd ../frontend
-  npm install
+  npm install --no-package-lock
   npm run build
   cd ../backend
 fi
