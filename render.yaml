@@ -1,0 +1,45 @@
+services:
+  # =========================================================================
+  # 1. PeyarVaralaru AI — Backend FastAPI Web Service
+  # =========================================================================
+  - type: web
+    name: peyarvaralaru-api
+    runtime: python
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: FRONTEND_ORIGIN
+        fromService:
+          type: web
+          name: peyarvaralaru-web
+          property: host
+
+  # =========================================================================
+  # 2. PeyarVaralaru AI — Frontend React Static Site
+  # =========================================================================
+  - type: web
+    name: peyarvaralaru-web
+    runtime: static
+    region: oregon
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: peyarvaralaru-api
+          property: host

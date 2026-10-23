@@ -81,6 +81,32 @@ export const HistoricalMapWorkspace = ({
   const imageOverlaysRef = useRef([]);
   const markersRef = useRef([]);
   const isSyncingRef = useRef(false);
+  const resizeTimeoutsRef = useRef([]);
+
+  // Safely invalidate size only if map container and mapPane still exist in the DOM
+  const safeInvalidateSize = (mapInstance) => {
+    try {
+      if (
+        mapInstance &&
+        mapInstance._mapPane &&
+        mapInstance._container &&
+        typeof mapInstance.invalidateSize === 'function' &&
+        typeof mapInstance.getContainer === 'function' &&
+        document.body.contains(mapInstance.getContainer())
+      ) {
+        mapInstance.invalidateSize({ pan: false });
+      }
+    } catch (e) {
+      // Ignore race conditions during map unmount or pane disposal
+    }
+  };
+
+  const scheduleInvalidate = (mapInstances) => {
+    const tid = setTimeout(() => {
+      mapInstances.forEach((m) => safeInvalidateSize(m));
+    }, 200);
+    resizeTimeoutsRef.current.push(tid);
+  };
 
   // Parse bounds from mapData
   const getMapBounds = useCallback(() => {
@@ -111,6 +137,10 @@ export const HistoricalMapWorkspace = ({
 
   // Clean up existing maps
   const cleanupMaps = () => {
+    // Clear pending resize timeouts to prevent invalidating removed panes
+    resizeTimeoutsRef.current.forEach((tid) => clearTimeout(tid));
+    resizeTimeoutsRef.current = [];
+
     mapsRef.current.forEach((m) => {
       try {
         m.off();
@@ -128,16 +158,28 @@ export const HistoricalMapWorkspace = ({
   const syncDualMaps = (mapA, mapB) => {
     const handleMoveA = () => {
       if (isSyncingRef.current) return;
+      if (!mapA?._mapPane || !mapB?._mapPane) return;
       isSyncingRef.current = true;
-      mapB.setView(mapA.getCenter(), mapA.getZoom(), { animate: false });
-      isSyncingRef.current = false;
+      try {
+        mapB.setView(mapA.getCenter(), mapA.getZoom(), { animate: false });
+      } catch (e) {
+        // ignore detached error
+      } finally {
+        isSyncingRef.current = false;
+      }
     };
 
     const handleMoveB = () => {
       if (isSyncingRef.current) return;
+      if (!mapA?._mapPane || !mapB?._mapPane) return;
       isSyncingRef.current = true;
-      mapA.setView(mapB.getCenter(), mapB.getZoom(), { animate: false });
-      isSyncingRef.current = false;
+      try {
+        mapA.setView(mapB.getCenter(), mapB.getZoom(), { animate: false });
+      } catch (e) {
+        // ignore detached error
+      } finally {
+        isSyncingRef.current = false;
+      }
     };
 
     mapA.on('move', handleMoveA);
@@ -245,10 +287,7 @@ export const HistoricalMapWorkspace = ({
       syncDualMaps(mapLeft, mapRight);
 
       mapsRef.current = [mapLeft, mapRight];
-      setTimeout(() => {
-        mapLeft.invalidateSize();
-        mapRight.invalidateSize();
-      }, 200);
+      scheduleInvalidate([mapLeft, mapRight]);
 
     } else if (mode === 'swipe' && swipeLeftRef.current && swipeRightRef.current) {
       // MODE B: Swipe Comparison
@@ -290,10 +329,7 @@ export const HistoricalMapWorkspace = ({
       syncDualMaps(mapLeft, mapRight);
 
       mapsRef.current = [mapLeft, mapRight];
-      setTimeout(() => {
-        mapLeft.invalidateSize();
-        mapRight.invalidateSize();
-      }, 200);
+      scheduleInvalidate([mapLeft, mapRight]);
 
     } else if (mode === 'transparency' && overlayRef.current) {
       // MODE C: Transparency Overlay
@@ -319,9 +355,7 @@ export const HistoricalMapWorkspace = ({
       addObservationMarkers(map);
 
       mapsRef.current = [map];
-      setTimeout(() => {
-        map.invalidateSize();
-      }, 200);
+      scheduleInvalidate([map]);
 
     } else if (mode === 'inspection' && inspectionRef.current) {
       // MODE D: Archival Inspection
@@ -344,9 +378,7 @@ export const HistoricalMapWorkspace = ({
       }
 
       mapsRef.current = [map];
-      setTimeout(() => {
-        map.invalidateSize();
-      }, 200);
+      scheduleInvalidate([map]);
     }
 
     return () => {
@@ -372,9 +404,11 @@ export const HistoricalMapWorkspace = ({
       const coords = typeof focusedObservation.coordinates_json === 'string'
         ? JSON.parse(focusedObservation.coordinates_json)
         : focusedObservation.coordinates_json;
-      if (Array.isArray(coords) && coords.length === 2) {
+      if (Array.isArray(coords) && coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
         mapsRef.current.forEach((m) => {
-          m.flyTo([coords[0], coords[1]], 15, { duration: 1.2 });
+          if (m && m._mapPane) {
+            m.flyTo([coords[0], coords[1]], 15, { duration: 1.2 });
+          }
         });
 
         // Trigger popup
@@ -396,6 +430,7 @@ export const HistoricalMapWorkspace = ({
     const defaultZoom = mapData.default_zoom || 13;
 
     mapsRef.current.forEach((m) => {
+      if (!m || !m._mapPane) return;
       if (mode === 'inspection') {
         const bounds = getMapBounds();
         m.fitBounds(bounds);

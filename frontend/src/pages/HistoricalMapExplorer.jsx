@@ -256,11 +256,15 @@ export const HistoricalMapExplorer = () => {
               className="w-full px-3 py-2.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C5A66A] text-[#172B40]"
             >
               <option value="all">{t('maps.allPeriods', 'All Periods')}</option>
-              {periods.map((p) => (
-                <option key={p.period} value={p.period}>
-                  {lang === 'ta' ? (p.period_tamil || p.period) : p.period}
-                </option>
-              ))}
+              {periods.map((p, idx) => {
+                const val = typeof p === 'string' ? p : (p?.period || `period-${idx}`);
+                const label = typeof p === 'string' ? p : (lang === 'ta' ? (p?.period_tamil || p?.period) : p?.period);
+                return (
+                  <option key={val} value={val}>
+                    {label}
+                  </option>
+                );
+              })}
             </select>
           </div>
 
